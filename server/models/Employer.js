@@ -4,21 +4,36 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Order = require('./Order');
 
-const userSchema = new Schema({
-  firstName: {
+const employerSchema = new Schema({
+  companyName: {
     type: String,
     required: true,
     trim: true
   },
-  lastName: {
+  address: {
     type: String,
     required: true,
     trim: true
   }, 
-  email: {
+  city: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  state: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  website: {
     type: String,
     required: true,
     unique: true
+  },
+  email: {
+    type: String,
+    required: true,
+    trim: true
   },
   phone: {
     type: String,
@@ -35,26 +50,25 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  resume: {
-    type: Object,
-    required: false
+  accountManagername: {
+    type: String,
+    required: true,
+    trim: true
   },
-  locationPreference: {
+  accountManageremail: {
     type: String,
+    required: true,
     trim: true
-  }, 
-  jobtypePreference: {
+  },
+  accountManagerphone: {
     type: String,
+    required: true,
     trim: true
-  }, 
-  salaryRange: {
-    type: String,
-    trim: true
-  }
+  },
 });
 
 // set up pre-save middleware to create password
-userSchema.pre('save', async function(next) {
+employerSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -64,10 +78,10 @@ userSchema.pre('save', async function(next) {
 });
 
 // compare the incoming password with the hashed password
-userSchema.methods.isCorrectPassword = async function(password) {
+employerSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+const Employer = mongoose.model('Employer', employerSchema);
 
-module.exports = User;
+module.exports = Employer;
