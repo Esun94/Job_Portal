@@ -34,11 +34,11 @@ const jobSchema = new Schema({
         required: true,
         trim: true
     },
-    skills: {
+    skills: [{
         type: String,
         required: true,
         trim: true
-    },
+    }],
     employer: {
         type: Schema.Types.ObjectId,
         ref: 'Employer'
