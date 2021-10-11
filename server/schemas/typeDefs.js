@@ -1,6 +1,13 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+type JobPackage {
+  _id: ID
+  packageName: String
+  packageDuration: String
+  price: Float
+}
+
 type Employer {
   _id: ID
   companyName: String
@@ -9,7 +16,7 @@ type Employer {
   state: String
   website: String
   userName: String
-  email: Strin
+  email: String
   password: String
   phone: String
   accountManagername: String
@@ -47,12 +54,7 @@ type Jobs {
   }
 
 
-  type JobPackage {
-    _id: ID
-    packageName: String
-    packageDuration: String
-    price: Float
-  }
+  
 
   type Auth {
     token: ID
@@ -115,9 +117,6 @@ type Jobs {
     saveJob(job: NewJobInput): User
     removeJob(jobId: ID!): User
   }
-
-
-
 `;
 
 module.exports = typeDefs;

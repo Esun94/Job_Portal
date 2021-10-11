@@ -40,22 +40,22 @@ const resolvers = {
                 throw new AuthenticationError("No profile with this email found!")
             }
 
-            const correctUserPw = await userProfile.isCorrectPassword(password);
-            const correctEmployerPw = await employerProfile.isCorrectPassword(password);
-
-            if (!correctUserPw && !correctEmployerPw) {
-                throw new AuthenticationError("Invalid credentials, please try again")
-            }
-
             if (userProfile) {
+                const correctUserPw = await userProfile.isCorrectPassword(password);
+                if (!correctUserPw) {
+                    throw new AuthenticationError("Invalid credentials, please try again")
+                }
                 const token = signToken(userProfile);
                 return { token, profile };
             }
-            if (employerProfile) {
+            else if (employerProfile) {
+                const correctEmployerPw = await employerProfile.isCorrectPassword(password);
+                if (!correctEmployerPw) {
+                    throw new AuthenticationError("Invalid credentials, please try again")
+                }
                 const token = signToken(employerProfile);
                 return { token, profile };
             }
-
         },
         addJob: async (parent, { job }) => {
             return Jobs.create(job);
@@ -68,7 +68,7 @@ const resolvers = {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: {savedJobs: job} },
-                    { new: true}
+                    { new: true }
                 )
                 return updatedUser;
             }
