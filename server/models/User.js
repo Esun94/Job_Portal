@@ -15,30 +15,35 @@ const userSchema = new Schema({
     required: true,
     trim: true
   }, 
+  userName: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
+  },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    match: [/.+@.+\..+/, 'Must use a valid email address'],
   },
   phone: {
     type: String,
     required: false,
     trim: true
   },
-  userName: {
-    type: String,
-    required: true,
-    trim: true
-  },
   password: {
     type: String,
     required: true,
-    minlength: 5
+    minlength: 6
   },
   resume: {
     type: Object,
     required: false
   },
+  skill: [{
+    type: String
+  }],
   locationPreference: {
     type: String,
     trim: true

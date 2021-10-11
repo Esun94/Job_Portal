@@ -8,7 +8,8 @@ const employerSchema = new Schema({
   companyName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    unique: true
   },
   address: {
     type: String,
@@ -30,25 +31,26 @@ const employerSchema = new Schema({
     required: true,
     unique: true
   },
-  email: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  phone: {
-    type: String,
-    required: false,
-    trim: true
-  },
   userName: {
     type: String,
     required: true,
     trim: true
   },
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+    match: [/.+@.+\..+/, 'Must use a valid email address'],
+  },
   password: {
     type: String,
     required: true,
-    minlength: 5
+    minlength: 6
+  },
+  phone: {
+    type: String,
+    required: false,
+    trim: true
   },
   accountManagername: {
     type: String,
