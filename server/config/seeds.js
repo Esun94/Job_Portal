@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Employer, JobPackage } = require('../models');
+const { User, Employer, JobPackage, Job } = require('../models');
 
 db.once('open', async () => {
   await User.deleteMany();
@@ -14,7 +14,7 @@ db.once('open', async () => {
     resume: 'Resume-Rachel',
     skill: ['HTML', 'CSS', 'JS'],
     locationPreference: 'New Jersey',
-    salaryRange: '$80- 100K'
+    salaryRange: '$80- 100K',
   });
 
   await User.create({
@@ -27,9 +27,9 @@ db.once('open', async () => {
     resume: 'Resume-Ross',
     skill: ['HTML', 'CSS', 'JS', 'MongDb'],
     locationPreference: 'New York',
-    salaryRange: '$120- 140K'
+    salaryRange: '$120- 140K',
   });
-  
+
   await User.create({
     firstName: 'Joey',
     lastName: 'Tribbiani',
@@ -40,7 +40,7 @@ db.once('open', async () => {
     resume: 'Resume-Joey',
     skill: ['HTML', 'CSS', 'JS', 'MongDb', 'Express'],
     locationPreference: 'New Hampshire',
-    salaryRange: '$120- 140K'
+    salaryRange: '$120- 140K',
   });
 
   await User.create({
@@ -53,7 +53,7 @@ db.once('open', async () => {
     resume: 'Resume-Arya',
     skill: ['HTML', 'CSS', 'JS', 'SQL', 'Express'],
     locationPreference: 'Washington',
-    salaryRange: '$120- 140K'
+    salaryRange: '$120- 140K',
   });
 
   await User.create({
@@ -66,9 +66,9 @@ db.once('open', async () => {
     resume: 'Resume-Jon',
     skill: ['Testing', 'HTML', 'CSS', 'JS', 'SQL', 'Express'],
     locationPreference: 'California',
-    salaryRange: '$250- 300K annual'
+    salaryRange: '$250- 300K annual',
   });
- 
+
   console.log('users seeded');
 
   await Employer.deleteMany();
@@ -85,7 +85,7 @@ db.once('open', async () => {
     website: 'www.facebook.com',
     accountManagername: 'Lena Hadley',
     accountManageremail: 'lena@test.com',
-    accountManagerphone: '408-510-0007'
+    accountManagerphone: '408-510-0007',
   });
 
   await Employer.create({
@@ -100,7 +100,7 @@ db.once('open', async () => {
     website: 'www.google.com',
     accountManagername: 'Brandon Stark',
     accountManageremail: 'brandon@test.com',
-    accountManagerphone: '414-999-0007'
+    accountManagerphone: '414-999-0007',
   });
 
   await Employer.create({
@@ -115,20 +115,34 @@ db.once('open', async () => {
     website: 'www.microsoft.com',
     accountManagername: 'Sansa Stark',
     accountManageremail: 'sansa@test.com',
-    accountManagerphone: '808-999-0007'
+    accountManagerphone: '808-999-0007',
   });
   console.log('employers seeded');
 
   await JobPackage.insertMany([
-    {packageName: 'Basic', packageDuration: '1 year', price: '100.00'},
-    {packageName: 'Advanced', packageDuration: '1 year', price: '500.00'},
-    {packageName: 'Premium', packageDuration: '1 year', price: '1000.00'},
+    { packageName: 'Basic', packageDuration: '1 year', price: '100.00' },
+    { packageName: 'Advanced', packageDuration: '1 year', price: '500.00' },
+    { packageName: 'Premium', packageDuration: '1 year', price: '1000.00' },
   ]);
   console.log('job packages seeded');
 
+  await Job.create([
+    {
+      jobTitle: 'UI Developer',
+      jobLocation: 'New York City, NY',
+      jobType: 'Contract',
+      salary: '$75/hr',
+      jobDescription: `Work with the architect technical lead, and other technical staff and participate in all phases of software
+      development from analysis through design, development, and testing. Analyze product requirements and design a highly configurable and intuitive product.`,
+      skills: ['HTML', 'CSS', 'JavaScript', 'MVC design pattern'],
+      employer: 'Facebook Inc'
+    },
+  ]);
+
+  
+
   process.exit();
 });
-
 
 // db.once('open', async () => {
 //   await Category.deleteMany();

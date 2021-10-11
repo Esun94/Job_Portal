@@ -1,11 +1,10 @@
 const User = require('./User');
 const Employer = require('./Employer');
 const JobPackage = require('./JobPackage');
-const Job = require('./Jobs');
+const Job = require('./Job');
 
 
-
-module.exports = { User, Employer, JobPackage };
+module.exports = { User, Employer, JobPackage, Job };
 
 
 // const Product = require('./Product');
