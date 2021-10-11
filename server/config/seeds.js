@@ -1,29 +1,130 @@
 const db = require('./connection');
-const { User, Employer, Job, JobPackage} = require('../models');
+const { User, Employer, JobPackage } = require('../models');
 
 db.once('open', async () => {
   await User.deleteMany();
 
   await User.create({
-    firstName: 'Pamela',
-    lastName: 'Washington',
-    email: 'pamela@testmail.com',
+    firstName: 'Rachel',
+    lastName: 'Green',
+    userName: 'raygreen',
+    email: 'raygreen@testmail.com',
+    phone: '888-888-8888',
     password: 'password12345',
-    orders: [
-      {
-        products: [products[0]._id, products[0]._id, products[1]._id]
-      }
-    ]
+    resume: 'Resume-Rachel',
+    skill: ['HTML', 'CSS', 'JS'],
+    locationPreference: 'New Jersey',
+    salaryRange: '$80- 100K'
   });
 
   await User.create({
-    firstName: 'Elijah',
-    lastName: 'Holt',
-    email: 'eholt@testmail.com',
-    password: 'password12345'
+    firstName: 'Ross',
+    lastName: 'Geller',
+    userName: 'rgeller',
+    email: 'rgeller@testmail.com',
+    phone: '888-000-8888',
+    password: 'password12345',
+    resume: 'Resume-Ross',
+    skill: ['HTML', 'CSS', 'JS', 'MongDb'],
+    locationPreference: 'New York',
+    salaryRange: '$120- 140K'
+  });
+  
+  await User.create({
+    firstName: 'Joey',
+    lastName: 'Tribbiani',
+    userName: 'jtrib',
+    email: 'jtrib@testmail.com',
+    phone: '881-000-8881',
+    password: 'password12345',
+    resume: 'Resume-Joey',
+    skill: ['HTML', 'CSS', 'JS', 'MongDb', 'Express'],
+    locationPreference: 'New Hampshire',
+    salaryRange: '$120- 140K'
   });
 
+  await User.create({
+    firstName: 'Arya',
+    lastName: 'Stark',
+    userName: 'astark',
+    email: 'astark@testmail.com',
+    phone: '581-000-8881',
+    password: 'password12345',
+    resume: 'Resume-Arya',
+    skill: ['HTML', 'CSS', 'JS', 'SQL', 'Express'],
+    locationPreference: 'Washington',
+    salaryRange: '$120- 140K'
+  });
+
+  await User.create({
+    firstName: 'Jon',
+    lastName: 'Snow',
+    userName: 'jsnow',
+    email: 'jsnow@testmail.com',
+    phone: '581-000-8881',
+    password: 'password12345',
+    resume: 'Resume-Jon',
+    skill: ['Testing', 'HTML', 'CSS', 'JS', 'SQL', 'Express'],
+    locationPreference: 'California',
+    salaryRange: '$250- 300K annual'
+  });
+ 
   console.log('users seeded');
+
+  await Employer.deleteMany();
+
+  await Employer.create({
+    companyName: 'Facebook Inc',
+    userName: 'fbUser',
+    password: 'password12345',
+    address: '1 Hacker way',
+    city: 'Menlo Park',
+    state: 'California',
+    email: 'fbuser@test.com',
+    phone: '408-510-0000',
+    website: 'www.facebook.com',
+    accountManagername: 'Lena Hadley',
+    accountManageremail: 'lena@test.com',
+    accountManagerphone: '408-510-0007'
+  });
+
+  await Employer.create({
+    companyName: 'Google LLC',
+    userName: 'googleUser',
+    password: 'password12345',
+    address: '1 Infinity way',
+    city: 'Mountain View',
+    state: 'California',
+    email: 'googleuser@test.com',
+    phone: '414-999-0000',
+    website: 'www.google.com',
+    accountManagername: 'Brandon Stark',
+    accountManageremail: 'brandon@test.com',
+    accountManagerphone: '414-999-0007'
+  });
+
+  await Employer.create({
+    companyName: 'Microsoft Corporation',
+    userName: 'msUser',
+    password: 'password12345',
+    address: 'Redmon',
+    city: 'Redmond',
+    state: 'Washington',
+    email: 'msuser@test.com',
+    phone: '808-999-0000',
+    website: 'www.microsoft.com',
+    accountManagername: 'Sansa Stark',
+    accountManageremail: 'sansa@test.com',
+    accountManagerphone: '808-999-0007'
+  });
+  console.log('employers seeded');
+
+  await JobPackage.insertMany([
+    {packageName: 'Basic', packageDuration: '1 year', price: '100.00'},
+    {packageName: 'Advanced', packageDuration: '1 year', price: '500.00'},
+    {packageName: 'Premium', packageDuration: '1 year', price: '1000.00'},
+  ]);
+  console.log('job packages seeded');
 
   process.exit();
 });
