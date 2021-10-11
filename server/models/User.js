@@ -38,7 +38,7 @@ const userSchema = new Schema({
     minlength: 6
   },
   resume: {
-    type: Object,
+    type: String,
     required: false
   },
   skill: [{
