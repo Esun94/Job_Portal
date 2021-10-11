@@ -119,12 +119,21 @@ db.once('open', async () => {
   });
   console.log('employers seeded');
 
+  await JobPackage.deleteMany();
+
   await JobPackage.insertMany([
     { packageName: 'Basic', packageDuration: '1 year', price: '100.00' },
     { packageName: 'Advanced', packageDuration: '1 year', price: '500.00' },
     { packageName: 'Premium', packageDuration: '1 year', price: '1000.00' },
   ]);
   console.log('job packages seeded');
+
+  const employer = await Employer.findOne({
+    companyName: 'Facebook Inc'
+  });
+
+  console.log(employer);
+  await Job.deleteMany();
 
   await Job.create([
     {
@@ -135,11 +144,9 @@ db.once('open', async () => {
       jobDescription: `Work with the architect technical lead, and other technical staff and participate in all phases of software
       development from analysis through design, development, and testing. Analyze product requirements and design a highly configurable and intuitive product.`,
       skills: ['HTML', 'CSS', 'JavaScript', 'MVC design pattern'],
-      employer: 'Facebook Inc'
+      employer: employer._id
     },
   ]);
-
-  
 
   process.exit();
 });
