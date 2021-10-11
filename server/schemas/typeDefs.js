@@ -1,59 +1,56 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Category {
-    _id: ID
-    name: String
-  }
-
-  type Product {
-    _id: ID
-    name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
-    category: Category
-  }
-
-  type Order {
-    _id: ID
-    purchaseDate: String
-    products: [Product]
-  }
-
   type User {
+    _id: ID!
+    firstName: String!
+    lastName: String!
+    userName: String!
+    email: String!
+    phone: String!
+    password: String!
+    resume: String
+    skill: [String]
+    locationPreference: String
+    jobtypePreference: String
+    salaryRange: String
+  }
+
+  type Employer {
     _id: ID
-    firstName: String
-    lastName: String
-    email: String
-    orders: [Order]
+    companyName: String!
+    address: String!
+    city: String!
+    state: String!
+    website: String!
+    userName: String!
+    email: String!
+    password: String!
+    phone: String!
+    accountManagername: String!
+    accountManageremail: String!
+    accountManagerphone: String!
   }
 
-  type Checkout {
-    session: ID
+  scalar Date
+  type Jobs {
+    _id: ID!
+    postDate: Date
+    jobTitle: String!
+    jobLocation: String!
+    jobType: String!
+    salary: String!
+    jobDescription: String!
+    skills: [String!]
+    employer: Employer
+    users: [User]
   }
 
-  type Auth {
-    token: ID
-    user: User
-  }
-
-  type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
-  }
-
-  type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addOrder(products: [ID]!): Order
-    updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
-    login(email: String!, password: String!): Auth
+  type JobPackage {
+    _id: ID!
+    packageName: String
+    packageDuration: String
+    price: Float
   }
 `;
 
