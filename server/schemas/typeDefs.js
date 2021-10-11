@@ -111,8 +111,9 @@ type Jobs {
     addEmployer(employer: NewEmployerInput): Auth
     
     addJob(job: NewJobInput): Job
-    saveJob(id: ID!): User
-    removeJob(id: ID!): User
+    deleteJob(jobId: ID!): Job
+    saveJob(job: NewJobInput): User
+    removeJob(jobId: ID!): User
   }
 
 
