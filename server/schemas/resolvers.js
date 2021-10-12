@@ -25,11 +25,11 @@ const resolvers = {
         addUser: async(parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
-            return { token, user};
+            return { token, user };
         },
         addEmployer: async(parent, args) => {
             const employer = await Employer.create(args);
-            const token = signToken(user);
+            const token = signToken(employer);
             return { token, employer};
         },
         login: async (parent, {email, password }) => {
@@ -46,7 +46,7 @@ const resolvers = {
                     throw new AuthenticationError("Invalid credentials, please try again")
                 }
                 const token = signToken(userProfile);
-                return { token, profile };
+                return { token, userProfile };
             }
             else if (employerProfile) {
                 const correctEmployerPw = await employerProfile.isCorrectPassword(password);
@@ -54,7 +54,7 @@ const resolvers = {
                     throw new AuthenticationError("Invalid credentials, please try again")
                 }
                 const token = signToken(employerProfile);
-                return { token, profile };
+                return { token, employerProfile };
             }
         },
         addJob: async (parent, { job }) => {
@@ -63,7 +63,7 @@ const resolvers = {
         deleteJob: async(parent, {jobId}) => {
             return Job.findOneAndDelete({ _id: jobId });
         },
-        saveJob: async (parent, {job}, context) => {
+        saveJob: async (parent, { job }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
