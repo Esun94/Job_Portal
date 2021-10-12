@@ -1,4 +1,4 @@
-const { User, Employer, Jobs, JobPackage} = require('../models');
+const { User, Employer, Job, JobPackage} = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -17,7 +17,7 @@ const resolvers = {
             throw new AuthenticationError("You need to be logged in!")
         },
         jobs: async () => {
-            return Jobs.find();
+            return Job.find();
         }
     },
 
@@ -58,10 +58,10 @@ const resolvers = {
             }
         },
         addJob: async (parent, { job }) => {
-            return Jobs.create(job);
+            return Job.create(job);
         },
         deleteJob: async(parent, {jobId}) => {
-            return Jobs.findOneAndDelete({ _id: jobId });
+            return Job.findOneAndDelete({ _id: jobId });
         },
         saveJob: async (parent, {job}, context) => {
             if (context.user) {
