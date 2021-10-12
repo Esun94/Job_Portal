@@ -25,7 +25,7 @@ type Employer {
 }
 
 scalar Date
-type Jobs {
+type Job {
   _id: ID
   postDate: Date
   jobTitle: String
@@ -50,7 +50,7 @@ type Jobs {
     locationPreference: String
     jobtypePreference: String
     salaryRange: String
-    savedJobs: [Jobs]
+    savedJobs: [Job]
   }
 
 
@@ -60,11 +60,12 @@ type Jobs {
     token: ID
     user: User
     employer: Employer
+  }
 
   type Query {
     user(id: ID!): User
     employer(id: ID!): Employer
-    jobs: [Jobs]
+    jobs: [Job]
   }
 
   input NewUserInput {
