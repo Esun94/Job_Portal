@@ -53,9 +53,6 @@ type Job {
     savedJobs: [Job]
   }
 
-
-  
-
   type Auth {
     token: ID
     user: User
