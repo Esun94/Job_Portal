@@ -11,6 +11,7 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import NoMatch from './pages/NoMatch';
+import EmployerLogin from './pages/EmployerLogin'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
@@ -46,6 +47,7 @@ function App() {
             <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={EmployerLogin} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/success" component={Success} />
