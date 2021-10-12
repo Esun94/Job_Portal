@@ -1,4 +1,5 @@
 import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
 
 class AuthService {
   getProfile() {
@@ -12,6 +13,7 @@ class AuthService {
   }
 
   isTokenExpired(token) {
+    // TODO: use TOKEN_EXPIRATION from .env for checking token expiration 
     try {
       const decoded = decode(token);
       if (decoded.exp < Date.now() / 1000) {
@@ -20,6 +22,11 @@ class AuthService {
     } catch (err) {
       return false;
     }
+  }
+
+  getLoggedInUserType() {    
+    const decodedToken = jwt.verify(this.getToken(), process.env.TOKEN_SECRET, { maxAge: process.env.TOKEN_EXPIRATION });
+    return decodedToken.type;
   }
 
   getToken() {
