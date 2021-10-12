@@ -107,12 +107,45 @@ type Job {
 
   type Mutation {
     login(email: String, password: String): Auth
-    addUser(user: NewUserInput): Auth
-    addEmployer(employer: NewEmployerInput): Auth
+
+    addUser(
+      firstName: String,
+      lastName: String,
+      userName: String,
+      email: String,
+      phone: String,
+      password: String,
+      resume: String,
+      skill: [String],
+      locationPreference: String,
+      jobtypePreference: String,
+      salaryRange: String): Auth
+
+    addEmployer(
+      companyName: String,
+      address: String,
+      city: String,
+      state: String,
+      website: String,
+      userName: String,
+      email: String,
+      password: String,
+      phone: String,
+      accountManagername: String,
+      accountManageremail: String,
+      accountManagerphone: String): Auth
     
     addJob(job: NewJobInput): Job
     deleteJob(jobId: ID!): Job
-    saveJob(job: NewJobInput): User
+    
+    saveJob(
+      jobTitle: String,
+      jobLocation: String,
+      jobType: String,
+      salary: String,
+      jobDescription: String,
+      skills: [String]): User
+      
     removeJob(jobId: ID!): User
   }
 `;
