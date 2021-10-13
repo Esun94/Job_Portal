@@ -29,20 +29,20 @@ const PostJob = () => {
                     </Form.Group>
                 </Row>
                 <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Group as={Col} controlId="formGridSalary">
                         <Form.Label>Salary</Form.Label>
                         <Form.Control type="text" placeholder="Enter Job Salary" />
                     </Form.Group>
-                    <Form.Group as={Col} controlId="formGridState">
+                    <Form.Group as={Col} controlId="formGridDescription">
                         <Form.Label>Description</Form.Label>
                         <Form.Control type="text" placeholder="Enter Job Description" />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Group as={Col} controlId="formGridSkills">
                         <Form.Label>Skills</Form.Label>
                         <Form.Control type="text" placeholder="Enter Skills" />
                     </Form.Group>
-                    <Form.Group as={Col} controlId="formGridState">
+                    <Form.Group as={Col} controlId="formGridEmployer">
                         <Form.Label>Employer</Form.Label>
                         <Form.Control type="text" placeholder="Enter Employer" />
                     </Form.Group>
