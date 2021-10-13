@@ -46,7 +46,7 @@ const resolvers = {
                     throw new AuthenticationError("Invalid credentials, please try again")
                 }
                 const token = signToken(userProfile, 'user');
-                return { token, profile };
+                return { token, userProfile };
             }
             else if (employerProfile) {
                 const correctEmployerPw = await employerProfile.isCorrectPassword(password);
@@ -63,11 +63,11 @@ const resolvers = {
         deleteJob: async(parent, {jobId}) => {
             return Job.findOneAndDelete({ _id: jobId });
         },
-        saveJob: async (parent, { job }, context) => {
+        saveJob: async (parent, args, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: {savedJobs: job} },
+                    { $addToSet: {savedJobs: args} },
                     { new: true }
                 )
                 return updatedUser;

@@ -146,6 +146,26 @@ db.once('open', async () => {
       skills: ['HTML', 'CSS', 'JavaScript', 'MVC design pattern'],
       employer: employer._id
     },
+    {
+      jobTitle: 'Front End Developer',
+      jobLocation: 'New York City, NY',
+      jobType: 'Contract',
+      salary: '$100,000',
+      jobDescription: `Work with the architect technical lead, and other technical staff and participate in all phases of software
+      development from analysis through design, development, and testing. Analyze product requirements and design a highly configurable and intuitive product.`,
+      skills: ['HTML', 'CSS', 'Javascript'],
+      employer: employer._id
+    },
+    {
+      jobTitle: 'Backend Developer',
+      jobLocation: 'Michigan',
+      jobType: 'Full-Time',
+      salary: '$75/hr',
+      jobDescription: `Work with the architect technical lead, and other technical staff and participate in all phases of software
+      development from analysis through design, development, and testing. Analyze product requirements and design a highly configurable and intuitive product.`,
+      skills: ['Node', 'Express'],
+      employer: employer._id
+    }
   ]);
 
   process.exit();
