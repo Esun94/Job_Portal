@@ -1,5 +1,4 @@
 import React from 'react';
-import './searchBar.css';
 import { Form, Col, Row, Button } from 'react-bootstrap';
 
 
