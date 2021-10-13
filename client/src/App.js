@@ -44,7 +44,6 @@ function App() {
       <Router>
         <div>
           <Header />
-          <SearchBar placeholder="Search here.. "/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/login/employer"component={Employerlogin} />
@@ -58,6 +57,7 @@ function App() {
             <Route path="/searchjobs">
               <div>
                 <h1> Search Jobs</h1>
+                <SearchBar placeholder="Search for Jobs Here..."/>
               </div>
             </Route>
           </Switch>
