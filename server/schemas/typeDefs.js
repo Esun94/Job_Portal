@@ -109,7 +109,7 @@ type Job {
     login(email: String, password: String): Auth
 
     addUser(
-      firstName: String,
+      firstName: String!,
       lastName: String,
       userName: String,
       email: String,
@@ -145,7 +145,8 @@ type Job {
       jobType: String,
       salary: String,
       jobDescription: String,
-      skills: [String]): User
+      skills: [String],
+      employer: ID!): User
       
     removeJob(jobId: ID!): User
   }

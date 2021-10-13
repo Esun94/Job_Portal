@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const jobSchema = new Schema({
     postDate: {
@@ -45,5 +45,5 @@ const jobSchema = new Schema({
     }
 });
 
-// const Job = mongoose.model('Job', jobSchema)
-module.exports = jobSchema;
+const Job = model('Job', jobSchema)
+module.exports = Job;
