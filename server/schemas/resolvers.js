@@ -45,16 +45,16 @@ const resolvers = {
                 if (!correctUserPw) {
                     throw new AuthenticationError("Invalid credentials, please try again")
                 }
-                const token = signToken(userProfile);
-                return { token, userProfile };
+                const token = signToken(userProfile, 'user');
+                return { token, profile };
             }
             else if (employerProfile) {
                 const correctEmployerPw = await employerProfile.isCorrectPassword(password);
                 if (!correctEmployerPw) {
                     throw new AuthenticationError("Invalid credentials, please try again")
                 }
-                const token = signToken(employerProfile);
-                return { token, employerProfile };
+                const token = signToken(employerProfile, 'employer');
+                return { token, profile };
             }
         },
         addJob: async (parent, { job }) => {

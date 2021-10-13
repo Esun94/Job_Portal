@@ -42,9 +42,15 @@ const Header = () => {
       );
     } else {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row space-between">
           <li className="mx-1">
             <Link to="/signup">Signup</Link>
+          </li>
+          <li>
+            <Link to="/login/jobseeker">Job-Seeker Login</Link>
+          </li>
+          <li>
+            <Link to="/login/employer">Employer Login</Link>
           </li>
         </ul>
       );
