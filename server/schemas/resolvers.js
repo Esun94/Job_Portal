@@ -1,6 +1,9 @@
 const { User, Employer, Job, JobPackage} = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const mongoose = require('mongoose');
+
+// const jobSchema = require('../models/Job');
 
 const resolvers = {
     Query: {
@@ -64,12 +67,19 @@ const resolvers = {
             return Job.findOneAndDelete({ _id: jobId });
         },
         saveJob: async (parent, args, context) => {
+            console.log("save jobs: ", args);
+            const job = { ...args };
+            job.employer = mongoose.Types.ObjectId(args.employer);
+            console.log("save jobs2: ", job);
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: {savedJobs: args} },
+                    { $addToSet: {savedJobs: job} },
                     { new: true }
-                )
+                ).populate({
+                    path: "savedJobs",
+                    populate: "employer"
+                });
                 return updatedUser;
             }
         },

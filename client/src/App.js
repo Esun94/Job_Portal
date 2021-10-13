@@ -13,6 +13,10 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/header';
 import Footer from './components/footer';
+import SearchBar from './components/searchBar';
+
+// import jobSchema from '../../server/models/Job'
+
 import Employerlogin from './pages/EmployerLogin';
 
 const httpLink = createHttpLink({
@@ -53,11 +57,13 @@ function App() {
             <Route path="/searchjobs">
               <div>
                 <h1> Search Jobs</h1>
+                <SearchBar placeholder="Search for Jobs Here..."/>
               </div>
             </Route>
           </Switch>
           <Footer />
         </div>
+        
       </Router>
     </ApolloProvider>
   );

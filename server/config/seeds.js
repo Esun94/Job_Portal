@@ -136,7 +136,7 @@ db.once('open', async () => {
   
   await Job.deleteMany();
 
-  await Job.create([
+  await Job.insertMany([
     {
       jobTitle: 'UI Developer',
       jobLocation: 'New York City, NY',
