@@ -10,6 +10,7 @@ mutation login($email: String!, $password: String!) {
           firstName
       }
     }
+  }
 `;
 
 export const CREATE_USER = gql`

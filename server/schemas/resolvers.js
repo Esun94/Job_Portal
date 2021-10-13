@@ -35,7 +35,7 @@ const resolvers = {
             const token = signToken(employer);
             return { token, employer};
         },
-        login: async (parent, {email, password }) => {
+        login: async (parent, { email, password }) => {
             const userProfile = await User.findOne({ email });
             const employerProfile = await Employer.findOne({ email });
 
@@ -57,7 +57,7 @@ const resolvers = {
                     throw new AuthenticationError("Invalid credentials, please try again")
                 }
                 const token = signToken(employerProfile, 'employer');
-                return { token, profile };
+                return { token, employerProfile };
             }
         },
         addJob: async (parent, { job }) => {
