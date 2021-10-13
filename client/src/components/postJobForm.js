@@ -53,4 +53,6 @@ const PostJob = () => {
             </Form>
         </div>
     )
-}
+};
+
+export default PostJob;
