@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
 
     return (
-        <div class="container">
+        <div className="container">
             <h1>Welcome to Job-Portal</h1>
             <div className="container">
                 <SearchBar placeholder="Search for Jobs Here..."/>
