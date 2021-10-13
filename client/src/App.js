@@ -13,6 +13,10 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/header';
 import Footer from './components/footer';
+import SearchBar from './components/searchBar';
+
+// import jobSchema from '../../server/models/Job'
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -39,6 +43,7 @@ function App() {
       <Router>
         <div>
           <Header />
+          <SearchBar placeholder="Search here.. "/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
@@ -56,6 +61,7 @@ function App() {
           </Switch>
           <Footer />
         </div>
+        
       </Router>
     </ApolloProvider>
   );
