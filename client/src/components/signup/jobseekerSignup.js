@@ -5,7 +5,6 @@ const JobseekerSignup = () => {
   return (
     <div>
       <h1>Jobseeker Signup</h1>
-
       <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridFirstName">
