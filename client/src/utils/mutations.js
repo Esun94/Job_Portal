@@ -12,23 +12,45 @@ export const LOGIN = gql`
 `;
 
 // TODO: Add Create user mutation
-
+//Mutation to signup as job seeker
 export const ADD_USER = gql`
-  mutation addUser(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $password: String!
-  ) {
-    addUser(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-      password: $password
-    ) {
+  mutation addUser($args: NewUserInput) {
+    addUser(user: $args) {
       token
       user {
         _id
+        firstName
+        lastName
+        userName
+        email
+        phone
+        resume
+        skill
+        locationPreference
+        jobtypePreference
+        salaryRange
+      }
+    }
+  }
+`;
+
+export const ADD_EMPLOYER = gql`
+  mutation addUser($args: NewEmployerInput) {
+    addUser(user: $args) {
+      token
+      employer {
+        _id
+        companyName
+        address
+        city
+        state
+        website
+        userName
+        email
+        phone
+        accountManagername
+        accountManageremail
+        accountManagerphone
       }
     }
   }

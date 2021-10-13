@@ -1,69 +1,78 @@
 import React from 'react';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import Logo from '../assets/logo.jpeg';
 
 const Header = () => {
+  const linkStyle = { color: 'white', textDecoration: 'none' };
   const showNavigation = () => {
     if (Auth.loggedIn()) {
       return (
         <>
           {Auth.getLoggedInUserType === 'user' ? (
-            <ul className="flex-row">
-              <li className="mx-1">
-                <Link to="/searchjobs">
-                  Search Jobs
-                  {/* TODO: This section needs links based on logged in user/employer */}
-                </Link>
-              </li>
-              <li className="mx-1">
-                {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                <a href="/" onClick={() => Auth.logout()}>
-                  Logout
-                </a>
-              </li>
-            </ul>
+            <>
+              <Nav.Link>
+                <Link to="/searchjobs">Search job</Link>
+              </Nav.Link>
+              <Nav.Link href="#" onClick={() => Auth.logout()}>
+                logout
+              </Nav.Link>
+            </>
           ) : (
-            <ul className="flex-row">
-              <li className="mx-1">
-                <Link to="/postjobs">
-                  Post Jobs{' '}
-                  {/* TODO: This section needs links based on logged in user/employer */}
-                </Link>
-              </li>
-              <li className="mx-1">
-                {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                <a href="/" onClick={() => Auth.logout()}>
-                  Logout
-                </a>
-              </li>
-            </ul>
+            <>
+              <Nav.Link>
+                <Link to="/postjobs">Post job</Link>
+              </Nav.Link>
+              <Nav.Link href="#" onClick={() => Auth.logout()}>
+                logout
+              </Nav.Link>
+            </>
           )}
         </>
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
+        <>
+          <Nav>
+            <Nav.Link>
+              <Link style={linkStyle} to="/login/jobseeker">
+                Job-Seeker
+              </Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link style={linkStyle} to="/login/employer">
+                Employer
+              </Link>
+            </Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link>
+              <Link
+                style={{ ...linkStyle, marginLeft: 'auto' }}
+                className="justify-content-end"
+                to="/signup"
+              >
+                Signup
+              </Link>
+            </Nav.Link>
+          </Nav>
+        </>
       );
     }
   };
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="briefcase bag">
-            💼
-          </span>
-          -Job-Portal
-        </Link>
-      </h1>
-
-      <nav>{showNavigation()}</nav>
-    </header>
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand>
+          <Link to="/">
+            <img src={Logo} width="100" />
+          </Link>
+        </Navbar.Brand>
+        <Nav className="me-auto">{showNavigation()}</Nav>
+      </Container>
+    </Navbar>
   );
 };
 

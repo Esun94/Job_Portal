@@ -17,6 +17,7 @@ import SearchBar from './components/searchBar';
 
 // import jobSchema from '../../server/models/Job'
 
+import Employerlogin from './pages/EmployerLogin';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,14 +47,15 @@ function App() {
           <SearchBar placeholder="Search here.. "/>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/postjobs">
+            <Route path="/login/employer"component={Employerlogin} />
+            <Route path="/login/jobseeker" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/postjobs">
               <div>
                 <h1> Post Jobs</h1>
               </div>
             </Route>
-            <Route exact path="/searchjobs">
+            <Route path="/searchjobs">
               <div>
                 <h1> Search Jobs</h1>
               </div>
