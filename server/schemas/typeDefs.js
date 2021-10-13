@@ -14,6 +14,7 @@ type Employer {
   address: String
   city: String
   state: String
+  zipCode: String
   website: String
   userName: String
   email: String
@@ -84,6 +85,7 @@ type Job {
     address: String
     city: String
     state: String
+    zipCode: String
     website: String
     userName: String
     email: String
@@ -126,6 +128,7 @@ type Job {
       address: String,
       city: String,
       state: String,
+      zipCode: String,
       website: String,
       userName: String,
       email: String,

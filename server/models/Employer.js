@@ -25,6 +25,11 @@ const employerSchema = new Schema({
     required: true,
     trim: true
   },
+  zipCode: {
+    type: String,
+    required: true,
+    trim: true
+  },
   website: {
     type: String,
     required: true,
