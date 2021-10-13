@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Row, Col, Button } from 'react-bootstrap';
+import { Container, FloatingLabel, Form, Row, Col, Button } from 'react-bootstrap';
 
 const JobseekerSignup = () => {
   return (
@@ -31,32 +31,48 @@ const JobseekerSignup = () => {
           </Form.Group>
         </Row>
 
+        <Form.Group className="mb-3" controlId="formGridPhone">
+          <Form.Label>Phone</Form.Label>
+          <Form.Control placeholder="Enter phone number with area code" />
+        </Form.Group>
+
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
         </Row>
-        
-        <Form.Group className="mb-3" controlId="formGridPhone">
-          <Form.Label>Phone</Form.Label>
-          <Form.Control placeholder="Enter phone number with area code" />
-        </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formGridAcmanager">
-          <Form.Label>Account Manager Name</Form.Label>
-          <Form.Control placeholder="Enter Account manager's name" />
+        <FloatingLabel controlId="floatingTextarea2" label="Resume">
+          <Form.Control
+            as="textarea"
+            placeholder="Paste Resume here"
+            style={{ height: '200px' }}
+          />
+        </FloatingLabel>
+        <Form.Group className="mb-3" controlId="formGridSkillr">
+          <Form.Label>Skills</Form.Label>
+          <Form.Control placeholder="Enter Skills separated by comma(,)" />
         </Form.Group>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridAcmanagerPhone">
-            <Form.Label>Account Manager Phone</Form.Label>
-            <Form.Control type="text" placeholder="Enter phone number" />
+          <Form.Group as={Col} controlId="formGridLocPreference">
+            <Form.Label>Location preference</Form.Label>
+            <Form.Control type="text" placeholder="Enter location preferences" />
           </Form.Group>
+        </Row>
 
-          <Form.Group as={Col} controlId="formGridAcEmail">
-            <Form.Label>Account Manager Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridJobPreference">
+            <Form.Label>Job Type preference</Form.Label>
+            <Form.Control type="text" placeholder="Enter Job type preferences: Fulltime/ Contract" />
+          </Form.Group>
+        </Row>
+
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridLocPreference">
+            <Form.Label>Location preference</Form.Label>
+            <Form.Control type="text" placeholder="Enter location preferences" />
           </Form.Group>
         </Row>
 
