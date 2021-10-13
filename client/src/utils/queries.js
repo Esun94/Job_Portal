@@ -41,5 +41,18 @@ query employer ($id: ID!) {
 `;
 
 export const GET_JOBS = gql`
-  
-`
+query {
+    jobs {
+    postDate
+    jobTitle
+    jobLocation
+    jobType
+    salary
+    jobDescription
+    skills
+    employer {
+      _id
+    }
+    }
+  }
+`;
