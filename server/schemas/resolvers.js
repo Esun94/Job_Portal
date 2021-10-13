@@ -46,7 +46,7 @@ const resolvers = {
                     throw new AuthenticationError("Invalid credentials, please try again")
                 }
                 const token = signToken(userProfile, 'user');
-                return { token, profile };
+                return { token, userProfile };
             }
             else if (employerProfile) {
                 const correctEmployerPw = await employerProfile.isCorrectPassword(password);
