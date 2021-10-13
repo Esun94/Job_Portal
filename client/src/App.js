@@ -13,6 +13,10 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/header';
 import Footer from './components/footer';
+import SearchBar from './components/searchBar';
+
+// import jobSchema from '../../server/models/Job'
+
 import Employerlogin from './pages/EmployerLogin';
 
 const httpLink = createHttpLink({
@@ -40,6 +44,7 @@ function App() {
       <Router>
         <div>
           <Header />
+          <SearchBar placeholder="Search here.. "/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/login/employer"component={Employerlogin} />
@@ -58,6 +63,7 @@ function App() {
           </Switch>
           <Footer />
         </div>
+        
       </Router>
     </ApolloProvider>
   );
