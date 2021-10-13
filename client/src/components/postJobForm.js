@@ -11,7 +11,7 @@ const PostJob = () => {
                     <Form.Label>Date Posted</Form.Label>
                     <Form.Control type="text" placeholder="Enter date" />
                 </Form.Group>
-        </Row>
+            </Row>
             </Form>
 
 
