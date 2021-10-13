@@ -139,6 +139,7 @@ type Job {
     deleteJob(jobId: ID!): Job
     
     saveJob(
+      jobId: String,
       jobTitle: String,
       jobLocation: String,
       jobType: String,
