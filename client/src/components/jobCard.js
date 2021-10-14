@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Form, Col, Row, Button, Card, ListGroup, ListGroupItem, Container } from 'react-bootstrap';
+// import { useQuery, gql } from '@apollo/client';
+// import { GET_JOBS } from '../utils/queries';
+
 
 const JobCard = ({ placeholder, data }) => {
+    // const { error, loading, data } = useQuery(GET_JOBS)
+
+    // useEffect(() => {
+
+    // }, [data]);
+
     return (
         <Row xs={1} md={3} className="g-4">
             {Array.from({ length: 6 }).map((_, idx) => (
