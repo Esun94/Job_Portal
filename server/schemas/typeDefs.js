@@ -102,7 +102,6 @@ type Job {
     skills: [String]
   }
 
-
   type Mutation {
     login(email: String, password: String): Auth
 
@@ -135,8 +134,12 @@ type Job {
     addJob(job: NewJobInput): Job
     deleteJob(jobId: ID!): Job
     
+    searchJobs(
+      jobTitle: String
+    ): [Job]
+
     saveJob(
-      jobId: String,
+      jobId: String
       jobTitle: String,
       jobLocation: String,
       jobType: String,

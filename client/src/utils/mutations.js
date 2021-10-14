@@ -142,3 +142,27 @@ export const REMOVE_JOB = gql`
     }
   }
 `;
+
+export const SEARCH_JOBS = gql`
+  mutation searchJobs($jobTitle: String) {
+    searchJobs(jobTitle: $jobTitle) {
+      _id
+      postDate
+      jobTitle
+      jobDescription
+      jobType
+      salary
+      skills
+      employer {
+        _id
+        companyName
+        city
+        state
+        website
+        accountManagername
+        accountManageremail
+        accountManagerphone
+      }
+    }
+  }
+`;
