@@ -138,6 +138,10 @@ type Job {
       jobTitle: String
     ): [Job]
 
+    applyJob(
+      jobId: String!
+    ): Job
+
     saveJob(
       jobId: String
       jobTitle: String,

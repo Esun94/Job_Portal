@@ -42,7 +42,11 @@ const jobSchema = new Schema({
     employer: {
         type: Schema.Types.ObjectId,
         ref: 'Employer'
-    }
+    },
+    users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 const Job = model('Job', jobSchema)

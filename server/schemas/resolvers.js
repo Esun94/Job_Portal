@@ -88,6 +88,22 @@ const resolvers = {
         return updatedUser;
       }
     },
+    applyJob: async (parent, { jobId }, context) => {
+      if (context.user) {
+        const updateJobApplication = await Job.findOneAndUpdate(
+          {
+            _id: jobId,
+          },
+          {
+            $push: { users: context.user._id },
+          },
+          {
+            new: true,
+          }
+        ).populate('employer');
+        return updateJobApplication;
+      }
+    },
     removeJob: async (parent, { jobId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
