@@ -42,6 +42,10 @@ const jobSchema = new Schema({
     employer: {
         type: Schema.Types.ObjectId,
         ref: 'Employer'
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 

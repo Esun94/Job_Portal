@@ -35,6 +35,7 @@ type Job {
   jobDescription: String
   skills: [String]
   employer: Employer
+  user: User
 }
 
   type User {
@@ -149,6 +150,9 @@ type Job {
       employer: ID!): User
       
     removeJob(jobId: ID!): User
+
+    applyToJob(userId: ID!): Job
+
   }
 `;
 

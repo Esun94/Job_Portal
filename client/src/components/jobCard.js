@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { Form, Col, Row, Button, Card, ListGroup, ListGroupItem, Container } from 'react-bootstrap';
 import { useQuery, gql } from '@apollo/client';
 import { GET_JOBS } from '../utils/queries';
+import Auth from '../utils/auth';
 
 
 const JobCard = () => {
@@ -30,9 +31,9 @@ const JobCard = () => {
                         <ListGroupItem>{job.salary}</ListGroupItem>
                         <ListGroupItem>{job.employer.companyName}</ListGroupItem>
                     </ListGroup>
-                    <Card.Body>
-                        <Card.Link href="#">Card Link</Card.Link>
-                        <Card.Link href="#">Another Link</Card.Link>
+                    <Card.Body>{Auth.loggedIn() ? 
+                    <Card.Link href="#">Apply Now</Card.Link> : 
+                    <Card.Link href="#">Login to Apply</Card.Link>}
                     </Card.Body>
                 </Card>
             </Col>
