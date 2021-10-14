@@ -20,7 +20,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     jobs: async () => {
-      return Job.find();
+      return Job.find().populate("employer");
     },
   },
 

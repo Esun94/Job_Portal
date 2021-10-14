@@ -51,6 +51,7 @@ export const GET_JOBS = gql`
       skills
       employer {
         _id
+        companyName
       }
     }
   }
