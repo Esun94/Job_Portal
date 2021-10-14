@@ -16,7 +16,6 @@ type Employer {
   state: String
   zipCode: String
   website: String
-  userName: String
   email: String
   password: String
   phone: String
@@ -42,7 +41,6 @@ type Job {
     _id: ID!
     firstName: String
     lastName: String
-    userName: String
     email: String
     phone: String
     password: String
@@ -69,7 +67,6 @@ type Job {
   input NewUserInput {
     firstName: String
     lastName: String
-    userName: String
     email: String
     phone: String
     password: String
@@ -87,7 +84,6 @@ type Job {
     state: String
     zipCode: String
     website: String
-    userName: String
     email: String
     password: String
     phone: String
@@ -112,8 +108,7 @@ type Job {
 
     addUser(
       firstName: String!,
-      lastName: String,
-      userName: String,
+      lastName: String
       email: String,
       phone: String,
       password: String,
@@ -130,7 +125,6 @@ type Job {
       state: String,
       zipCode: String,
       website: String,
-      userName: String,
       email: String,
       password: String,
       phone: String,

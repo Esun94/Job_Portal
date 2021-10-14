@@ -6,7 +6,6 @@ export const GET_USER = gql`
         _id
         firstName
         lastName
-        userName
         email
         phone
         password
@@ -23,36 +22,35 @@ export const GET_USER = gql`
 `;
 
 export const GET_EMPLOYER = gql`
-query employer ($id: ID!) {
-    employer(id:$id) {
-          companyName
-          address
-          city
-          state
-          website
-          userName
-          email
-          phone
-          accountManagername
-          accountManageremail
-          accountManagerphone
+  query employer($id: ID!) {
+    employer(id: $id) {
+      companyName
+      address
+      city
+      state
+      website
+      email
+      phone
+      accountManagername
+      accountManageremail
+      accountManagerphone
     }
   }
 `;
 
 export const GET_JOBS = gql`
-query {
+  query {
     jobs {
-    postDate
-    jobTitle
-    jobLocation
-    jobType
-    salary
-    jobDescription
-    skills
-    employer {
-      _id
-    }
+      postDate
+      jobTitle
+      jobLocation
+      jobType
+      salary
+      jobDescription
+      skills
+      employer {
+        _id
+      }
     }
   }
 `;
