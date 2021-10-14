@@ -12,7 +12,6 @@ export const CREATE_USER = gql`
   mutation addUser(
     $firstName: String!
     $lastName: String
-    $userName: String
     $email: String
     $phone: String
     $password: String
@@ -25,7 +24,6 @@ export const CREATE_USER = gql`
     addUser(
       firstName: $firstName
       lastName: $lastName
-      userName: $userName
       email: $email
       phone: $phone
       password: $password
@@ -48,7 +46,6 @@ export const CREATE_EMPLOYER = gql`
     $state: String
     $zipCode: String
     $website: String
-    $userName: String
     $email: String
     $password: String
     $phone: String
@@ -63,7 +60,6 @@ export const CREATE_EMPLOYER = gql`
       state: $state
       zipCode: $zipCode
       website: $website
-      userName: $userName
       email: $email
       password: $password
       phone: $phone
@@ -139,7 +135,6 @@ export const REMOVE_JOB = gql`
       _id
       firstName
       lastName
-      userName
       savedJobs {
         _id
         jobTitle

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,14 +8,14 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+import Auth from './utils/auth';
+
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/header';
 import Footer from './components/footer';
 import SearchBar from './components/searchBar';
-
-// import jobSchema from '../../server/models/Job'
 
 import Employerlogin from './pages/EmployerLogin';
 
@@ -45,7 +45,16 @@ function App() {
         <div>
           <Header />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/">
+              {
+                Auth.loggedIn() ? 
+                (
+                  Auth.getLoggedInUserType() === 'user'? 
+                  <Redirect to="/searchjobs" />: <Redirect to="/postjobs" />
+                ): 
+                <Home/>
+              }
+            </Route>
             <Route path="/login/employer"component={Employerlogin} />
             <Route path="/login/jobseeker" component={Login} />
             <Route path="/signup" component={Signup} />

@@ -5,7 +5,7 @@ import Auth from '../../utils/auth';
 
 import { useMutation } from '@apollo/client';
 
-const EmployerSignup = () => {
+const EmployerSignup = (props) => {
   const [userFormData, setUserFormData] = useState({
     companyName: '',
     address: '',
@@ -13,7 +13,6 @@ const EmployerSignup = () => {
     state: '',
     zipCode: '',
     website: '',
-    userName: '',
     email: '',
     password: '',
     phone: '',
@@ -49,6 +48,7 @@ const EmployerSignup = () => {
       }
   
       Auth.login(data.addEmployer.token);
+
     } catch (err) {
       console.error(err);
       // setShowAlert(true);
@@ -63,27 +63,21 @@ const EmployerSignup = () => {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCompanyName">
             <Form.Label>Company Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter Company Name" name="companyName" onChange={handleInputChange} />
+            <Form.Control type="text" placeholder="Enter Company Name" name="companyName" onChange={handleInputChange} required/>
           </Form.Group>
         </Row>
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" name="email" onChange={handleInputChange} />
+            <Form.Control type="email" placeholder="Enter email" name="email" onChange={handleInputChange} required/>
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridUsername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="text" placeholder="Enter username" name="userName" onChange={handleInputChange} />
-          </Form.Group>
-        </Row>
-
-        <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control name="password" type="password" placeholder="Password" onChange={handleInputChange} />
+            <Form.Control name="password" type="password" placeholder="Password" onChange={handleInputChange} required/>
           </Form.Group>
+
         </Row>
 
         <Form.Group className="mb-3" controlId="formGridAddress1">
@@ -99,23 +93,23 @@ const EmployerSignup = () => {
 
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>State</Form.Label>
-            <Form.Control type="text" placeholder="Enter State" name="state" onChange={handleInputChange} />
+            <Form.Control type="text" placeholder="Enter State" name="state" onChange={handleInputChange} required/>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridZipCode">
             <Form.Label>Zip</Form.Label>
-            <Form.Control type="text" placeholder="Enter Zipcode" name="zipCode" onChange={handleInputChange} />
+            <Form.Control type="text" placeholder="Enter Zipcode" name="zipCode" onChange={handleInputChange} required/>
           </Form.Group>
         </Row>
 
         <Form.Group className="mb-3" controlId="formGridPhone">
           <Form.Label>Phone</Form.Label>
-          <Form.Control placeholder="Enter phone number with area code" name="phone" onChange={handleInputChange} />
+          <Form.Control placeholder="Enter phone number with area code" name="phone" onChange={handleInputChange} required/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGridWebsite">
           <Form.Label>Website</Form.Label>
-          <Form.Control placeholder="Enter Website" name="website" onChange={handleInputChange} />
+          <Form.Control placeholder="Enter Website" name="website" onChange={handleInputChange} required/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formGridAcmanager">
