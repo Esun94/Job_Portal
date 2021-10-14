@@ -1,7 +1,58 @@
 import React from 'react';
 import { Container, FloatingLabel, Form, Row, Col, Button } from 'react-bootstrap';
+import { CREATE_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+
+import { useMutation } from '@apollo/client';
 
 const JobseekerSignup = () => {
+  const [userFormData, setUserFormData] = useState({
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: '',
+    phone: '',
+    password: '',
+    resume: '',
+    skill: '',
+    locationPreference: '',
+    jobtypePreference: '',
+    salaryRange: '',
+  })
+  
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
+
+  const [addUser, { error }] = useMutation(CREATE_USER);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    // TODO: Enable form validation by setting attribute to required in form inputs
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
+
+    try {
+      const { data } = await addUser({
+        variables: { ...userFormData },
+      });
+  
+      if (!data) {
+        throw new Error('something went wrong!');
+      }
+  
+      Auth.login(data.addUser.token);
+    } catch (err) {
+      console.error(err);
+      // setShowAlert(true);
+    }
+  }
+   
   return (
     <div>
       <h1>Jobseeker Signup</h1>
