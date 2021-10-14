@@ -35,11 +35,6 @@ const employerSchema = new Schema({
     required: true,
     unique: true
   },
-  userName: {
-    type: String,
-    required: true,
-    trim: true
-  },
   email: {
     type: String,
     required: true,

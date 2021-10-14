@@ -21,8 +21,8 @@ const Home = () => {
                     <SearchBar placeholder="Search for Jobs Here..."/>
             </div>
             <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-                 <div class="my-3 p-3">
-                    <h2 class="display-5">Looking for right Talent? Searching new Job opportunities ?</h2>
+                 <div className="my-3 p-3">
+                    <h2 className="display-5">Looking for right Talent? Searching new Job opportunities ?</h2>
                     <p className="lead font-weight-normal">Sign up to get started!</p>
                     <div className="btn btn-outline-secondary"><Link to="/signup">Signup</Link></div>
                 </div>

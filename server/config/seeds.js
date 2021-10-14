@@ -7,7 +7,6 @@ db.once('open', async () => {
   await User.create({
     firstName: 'Rachel',
     lastName: 'Green',
-    userName: 'raygreen',
     email: 'raygreen@testmail.com',
     phone: '888-888-8888',
     password: 'password12345',
@@ -20,7 +19,6 @@ db.once('open', async () => {
   await User.create({
     firstName: 'Ross',
     lastName: 'Geller',
-    userName: 'rgeller',
     email: 'rgeller@testmail.com',
     phone: '888-000-8888',
     password: 'password12345',
@@ -33,7 +31,6 @@ db.once('open', async () => {
   await User.create({
     firstName: 'Joey',
     lastName: 'Tribbiani',
-    userName: 'jtrib',
     email: 'jtrib@testmail.com',
     phone: '881-000-8881',
     password: 'password12345',
@@ -46,7 +43,6 @@ db.once('open', async () => {
   await User.create({
     firstName: 'Arya',
     lastName: 'Stark',
-    userName: 'astark',
     email: 'astark@testmail.com',
     phone: '581-000-8881',
     password: 'password12345',
@@ -59,7 +55,6 @@ db.once('open', async () => {
   await User.create({
     firstName: 'Jon',
     lastName: 'Snow',
-    userName: 'jsnow',
     email: 'jsnow@testmail.com',
     phone: '581-000-8881',
     password: 'password12345',
@@ -75,13 +70,12 @@ db.once('open', async () => {
 
   await Employer.create({
     companyName: 'Facebook Inc',
-    userName: 'fbUser',
+    email: 'fbuser@test.com',
     password: 'password12345',
     address: '1 Hacker way',
     city: 'Menlo Park',
     state: 'California',
     zipCode: '94025',
-    email: 'fbuser@test.com',
     phone: '408-510-0000',
     website: 'www.facebook.com',
     accountManagername: 'Lena Hadley',
@@ -91,13 +85,12 @@ db.once('open', async () => {
 
   await Employer.create({
     companyName: 'Google LLC',
-    userName: 'googleUser',
+    email: 'googleuser@test.com',
     password: 'password12345',
     address: '1 Infinity way',
     city: 'Mountain View',
     state: 'California',
     zipCode: '95014',
-    email: 'googleuser@test.com',
     phone: '414-999-0000',
     website: 'www.google.com',
     accountManagername: 'Brandon Stark',
@@ -107,13 +100,12 @@ db.once('open', async () => {
 
   await Employer.create({
     companyName: 'Microsoft Corporation',
-    userName: 'msUser',
+    email: 'msuser@test.com',
     password: 'password12345',
     address: 'Redmon',
     city: 'Redmond',
     state: 'Washington',
     zipCode: '98008',
-    email: 'msuser@test.com',
     phone: '808-999-0000',
     website: 'www.microsoft.com',
     accountManagername: 'Sansa Stark',

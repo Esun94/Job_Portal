@@ -1,6 +1,5 @@
 import decode from 'jwt-decode';
 import jwt from 'jsonwebtoken';
-
 class AuthService {
   getProfile() {
     return decode(this.getToken());
@@ -25,8 +24,8 @@ class AuthService {
   }
 
   getLoggedInUserType() {    
-    const decodedToken = jwt.verify(this.getToken(), process.env.TOKEN_SECRET, { maxAge: process.env.TOKEN_EXPIRATION });
-    return decodedToken.type;
+    const decodedToken = jwt.verify(this.getToken(), process.env.REACT_APP_TOKEN_SECRET, { maxAge: process.env.REACT_APP_TOKEN_EXPIRATION });
+    return decodedToken.data.type;
   }
 
   getToken() {
@@ -37,7 +36,6 @@ class AuthService {
   login(idToken) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
-
     window.location.assign('/');
   }
 
