@@ -19,6 +19,7 @@ export const GET_USER = gql`
           jobTitle
         }
     }
+  }
 `;
 
 export const GET_EMPLOYER = gql`
@@ -50,6 +51,7 @@ export const GET_JOBS = gql`
       skills
       employer {
         _id
+        companyName
       }
     }
   }

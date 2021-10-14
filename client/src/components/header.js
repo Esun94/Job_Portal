@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import Logo from '../assets/logo.jpeg';
 
+
+
 const Header = () => {
   const linkStyle = { color: 'white', textDecoration: 'none'};
   const showNavigation = () => {

@@ -1,29 +1,26 @@
 import React from "react";
 import SearchBar from '../components/searchBar';
 import { Link } from 'react-router-dom';
+import { Col, Card, CardColumns } from 'react-bootstrap';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_JOBS } from "../utils/queries";
+
+
+
+
 import JobCard from "../components/jobCard";
 
 const Home = () => {
 
     return (
-        // <div className="container">
-        //     <h1>Welcome to Job-Portal</h1>
-        //     <div className="container">
-        //         <SearchBar placeholder="Search for Jobs Here..."/>
-        //     </div>
-        //     <div>
-        //         Looking for Talent or Searching Jobs? Sign up to get started!
-        //         <Link to="/signup">Signup</Link>
-        //     </div>
-        // </div>
-
         <div className="container">
-            <div className="container mt-4 mr-sm-2">
-                    <SearchBar placeholder="Search for Jobs Here..."/>
+            <h1>Welcome to Job-Portal</h1>
+            <div className="container">
+                <SearchBar placeholder="Search for Jobs Here..."/>
             </div>
             <hr/>
             <div className="container">
-                <JobCard/>
+                <JobCard />
             </div>
             <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
                  <div className="my-3 p-3">
