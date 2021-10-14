@@ -19,6 +19,7 @@ export const GET_USER = gql`
           jobTitle
         }
     }
+  }
 `;
 
 export const GET_EMPLOYER = gql`
