@@ -123,11 +123,13 @@ db.once('open', async () => {
   ]);
   console.log('job packages seeded');
 
-  const employer = await Employer.findOne({
+  const employer1 = await Employer.findOne({
     companyName: 'Facebook Inc'
   });
 
-  console.log(employer);
+  const employer2 = await Employer.findOne({
+    companyName: 'Microsoft Corporation'
+  });
   
   await Job.deleteMany();
 
@@ -140,7 +142,7 @@ db.once('open', async () => {
       jobDescription: `Work with the architect technical lead, and other technical staff and participate in all phases of software
       development from analysis through design, development, and testing. Analyze product requirements and design a highly configurable and intuitive product.`,
       skills: ['HTML', 'CSS', 'JavaScript', 'MVC design pattern'],
-      employer: employer._id
+      employer: employer1._id
     },
     {
       jobTitle: 'Front End Developer',
@@ -150,7 +152,7 @@ db.once('open', async () => {
       jobDescription: `Work with the architect technical lead, and other technical staff and participate in all phases of software
       development from analysis through design, development, and testing. Analyze product requirements and design a highly configurable and intuitive product.`,
       skills: ['HTML', 'CSS', 'Javascript'],
-      employer: employer._id
+      employer: employer1._id
     },
     {
       jobTitle: 'Backend Developer',
@@ -160,7 +162,7 @@ db.once('open', async () => {
       jobDescription: `Work with the architect technical lead, and other technical staff and participate in all phases of software
       development from analysis through design, development, and testing. Analyze product requirements and design a highly configurable and intuitive product.`,
       skills: ['Node', 'Express'],
-      employer: employer._id
+      employer: employer2._id
     }
   ]);
 

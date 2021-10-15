@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const Job = require('./Job');
-
-// const jobSchema = require('./Job');
-
 const userSchema = new Schema({
   firstName: {
     type: String,
@@ -50,8 +46,7 @@ const userSchema = new Schema({
   salaryRange: {
     type: String,
     trim: true
-  },
-  savedJobs: [Job.schema]
+  }
 });
 
 // set up pre-save middleware to create password

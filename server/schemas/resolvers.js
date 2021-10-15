@@ -1,9 +1,7 @@
-const { User, Employer, Job, JobPackage } = require('../models');
+const { User, Employer, Job } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const mongoose = require('mongoose');
-
-// const jobSchema = require('../models/Job');
 
 const resolvers = {
   Query: {
@@ -19,8 +17,24 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    jobs: async () => {
-      return Job.find().populate("employer");
+    jobs: async (parent, { id, jobTitle }, context) => {
+      if (id) {
+        return Job.find({ _id: id }).populate('employer');
+      } else if (jobTitle) {
+        const result = await Job.find({
+          jobTitle: { $regex: jobTitle, $options: 'i' },
+        }).populate('employer');
+
+        return result;
+      } else {
+        return Job.find().populate('employer');
+      }
+    },
+    employerJobs: async (parent, args, context) => {
+      const result = await Job.find({
+        employer: Types.ObjectId(context.user._id),
+      });
+      return result;
     },
   },
 
@@ -104,6 +118,7 @@ const resolvers = {
         return updateJobApplication;
       }
     },
+
     removeJob: async (parent, { jobId }, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
@@ -113,13 +128,6 @@ const resolvers = {
         );
         return updatedUser;
       }
-    },
-    searchJobs: async (parent, { jobTitle }) => {
-      const result = await Job.find({
-        jobTitle: { $regex: jobTitle, $options: 'i' },
-      }).populate('employer');
-
-      return result;
     },
   },
 };
