@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
+const User = require('./User');
+
 const employerSchema = new Schema({
   companyName: {
     type: String,
@@ -66,6 +68,7 @@ const employerSchema = new Schema({
     required: true,
     trim: true
   },
+  applications: [User.schema]
 });
 
 // set up pre-save middleware to create password
