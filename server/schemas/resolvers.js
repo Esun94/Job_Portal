@@ -30,12 +30,19 @@ const resolvers = {
         return Job.find().populate('employer');
       }
     },
+
     employerJobs: async (parent, args, context) => {
       const result = await Job.find({
-        employer: Types.ObjectId(context.user._id),
+        employer: context.user._id,
       });
       return result;
     },
+    userAppliedJobs: async(parent, args, context) => {
+      const result = await Job.find({
+        users: context.user._id,
+      });
+      return result;
+    }
   },
 
   Mutation: {
@@ -44,11 +51,13 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     addEmployer: async (parent, args) => {
       const employer = await Employer.create(args);
       const token = signToken(employer);
       return { token, employer };
     },
+
     login: async (parent, { email, password }) => {
       const userProfile = await User.findOne({ email });
       const employerProfile = await Employer.findOne({ email });
@@ -79,12 +88,19 @@ const resolvers = {
         return { token, employerProfile };
       }
     },
-    addJob: async (parent, { job }) => {
-      return Job.create(job);
+
+    addJob: async (parent, args) => {
+      console.log(args);
+      const addJob = await Job.create(args);
+
+      return addJob;
+      
     },
+
     deleteJob: async (parent, { jobId }) => {
       return Job.findOneAndDelete({ _id: jobId });
     },
+
     saveJob: async (parent, args, context) => {
       console.log('save jobs: ', args);
       const job = { ...args };
@@ -102,6 +118,7 @@ const resolvers = {
         return updatedUser;
       }
     },
+
     applyJob: async (parent, { jobId }, context) => {
       if (context.user) {
         const updateJobApplication = await Job.findOneAndUpdate(

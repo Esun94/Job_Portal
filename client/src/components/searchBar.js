@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
 import { Form, Col, Row, Button, Container } from 'react-bootstrap';
 import JobCard from './jobCard';
-import { useQuery } from '@apollo/client';
-import { GET_JOBS } from '../utils/queries';
+
 
 const SearchBar = ({placeholder}) => {
-  const [searchForm, setSearchForm] = useState({
-    jobTitle: '',
-  });
+  const [jobTitle, setJobTitle] = useState('');
   
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setSearchForm({ ...searchForm, [name]: value });
-  };
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setSearchForm({ ...searchForm, [name]: value });
+  // };
 
-  const { error, loading, data } = useQuery(GET_JOBS, {
-    variables: { ...searchForm },
-  });
-  const jobs = data?.jobs || [];
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setJobTitle(event.target.jobTitle.value);
+  }
 
   return (
     <>
       <Container fluid="md">
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Row className="align-items-center">
             <Col xs="auto">
               <Form.Label htmlFor="inlineFormInput" visuallyHidden>
@@ -31,7 +28,6 @@ const SearchBar = ({placeholder}) => {
               <Form.Control
                 type="search"
                 placeholder={placeholder}
-                onChange={handleInputChange}
                 name="jobTitle"
               />
             </Col>
@@ -45,7 +41,7 @@ const SearchBar = ({placeholder}) => {
       </Container>
       <hr />
       <div className="container">
-        <JobCard jobs={jobs} />
+        <JobCard jobTitle={jobTitle} />
       </div>
     </>
   );
