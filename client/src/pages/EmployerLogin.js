@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
+import JobPackages from '../components/jobPricePackages';
 
 function Employerlogin(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -31,7 +32,6 @@ function Employerlogin(props) {
 
   return (
     <div className="container my-1">
-
       <h2>Employer Login</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
