@@ -33,10 +33,16 @@ const resolvers = {
 
     employerJobs: async (parent, args, context) => {
       const result = await Job.find({
-        employer: Types.ObjectId(context.user._id),
+        employer: context.user._id,
       });
       return result;
     },
+    userAppliedJobs: async(parent, args, context) => {
+      const result = await Job.find({
+        users: context.user._id,
+      });
+      return result;
+    }
   },
 
   Mutation: {

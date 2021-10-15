@@ -28,6 +28,12 @@ class AuthService {
     return decodedToken.data.type;
   }
 
+  
+  getId() {    
+    const decodedToken = jwt.verify(this.getToken(), process.env.REACT_APP_TOKEN_SECRET, { maxAge: process.env.REACT_APP_TOKEN_EXPIRATION });
+    return decodedToken.data.idToken;
+  }
+
   getToken() {
     // Retrieves the user token from localStorage
     return localStorage.getItem('id_token');
