@@ -64,6 +64,7 @@ type Job {
     employer(id: ID!): Employer
     jobs(id: ID, jobTitle: String): [Job]
     employerJobs: [Job]
+    userAppliedJobs: [Job]
   }
 
   input NewUserInput {
