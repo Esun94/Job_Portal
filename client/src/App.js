@@ -21,6 +21,7 @@ import Signup from './pages/Signup';
 import Header from './components/header';
 import Footer from './components/footer';
 import SearchBar from './components/searchBar';
+import PostJob from './components/postJobForm';
 
 import Employerlogin from './pages/EmployerLogin';
 
@@ -57,7 +58,7 @@ function App() {
                     Auth.getLoggedInUserType() === 'user' ? (
                       <Redirect to="/searchjobs" />
                     ) : (
-                      <Redirect to="/postjobs" />
+                      <Redirect to="/postjobs" component={PostJob}/>
                     )
                   ) : (
                     <Home />
@@ -66,11 +67,7 @@ function App() {
                 <Route path="/login/employer" component={Employerlogin} />
                 <Route path="/login/jobseeker" component={Login} />
                 <Route path="/signup" component={Signup} />
-                <Route path="/postjobs">
-                  <div>
-                    <h1> Post Jobs</h1>
-                  </div>
-                </Route>
+                <Route path="/postjobs" component={PostJob} />
                 <Route path="/searchjobs">
                   <div>
                     <h1> Search Jobs</h1>

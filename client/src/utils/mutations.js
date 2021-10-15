@@ -77,7 +77,7 @@ export const ADD_JOB = gql`
     addJob(job: $job) {
       _id
       jobTitle
-      jobDescription
+      jobLocation
       jobType
       salary
       jobDescription
