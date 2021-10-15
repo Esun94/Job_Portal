@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -44,35 +49,39 @@ function App() {
       <Router>
         <div>
           <Header />
-          <Switch>
-            <Route exact path="/">
-              {
-                Auth.loggedIn() ? 
-                (
-                  Auth.getLoggedInUserType() === 'user'? 
-                  <Redirect to="/searchjobs" />: <Redirect to="/postjobs" />
-                ): 
-                <Home/>
-              }
-            </Route>
-            <Route path="/login/employer"component={Employerlogin} />
-            <Route path="/login/jobseeker" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/postjobs">
-              <div>
-                <h1> Post Jobs</h1>
-              </div>
-            </Route>
-            <Route path="/searchjobs">
-              <div>
-                <h1> Search Jobs</h1>
-                <SearchBar placeholder="Search for Jobs Here..."/>
-              </div>
-            </Route>
-          </Switch>
+          <main className="flex-shrink-0">
+            <div className="container">
+              <Switch>
+                <Route exact path="/">
+                  {Auth.loggedIn() ? (
+                    Auth.getLoggedInUserType() === 'user' ? (
+                      <Redirect to="/searchjobs" />
+                    ) : (
+                      <Redirect to="/postjobs" />
+                    )
+                  ) : (
+                    <Home />
+                  )}
+                </Route>
+                <Route path="/login/employer" component={Employerlogin} />
+                <Route path="/login/jobseeker" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/postjobs">
+                  <div>
+                    <h1> Post Jobs</h1>
+                  </div>
+                </Route>
+                <Route path="/searchjobs">
+                  <div>
+                    <h1> Search Jobs</h1>
+                    <SearchBar placeholder="Search for Jobs Here..." />
+                  </div>
+                </Route>
+              </Switch>
+            </div>
+          </main>
           <Footer />
         </div>
-        
       </Router>
     </ApolloProvider>
   );

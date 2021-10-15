@@ -166,3 +166,24 @@ export const SEARCH_JOBS = gql`
     }
   }
 `;
+
+export const APPLY_JOB = gql`
+  mutation applyJob($jobId: String!) {
+    applyJob(jobId: $jobId) {
+      _id
+      postDate
+      jobTitle
+      jobDescription
+      salary
+      employer {
+        _id
+        companyName
+        city
+        state
+        website
+        accountManagername
+        accountManagerphone
+      }
+    }
+  }
+`;

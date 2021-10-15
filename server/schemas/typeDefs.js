@@ -61,7 +61,8 @@ type Job {
   type Query {
     user(id: ID!): User
     employer(id: ID!): Employer
-    jobs: [Job]
+    jobs(id: ID, jobTitle: String): [Job]
+    employerJobs: [Job]
   }
 
   input NewUserInput {
@@ -134,9 +135,9 @@ type Job {
     addJob(job: NewJobInput): Job
     deleteJob(jobId: ID!): Job
     
-    searchJobs(
-      jobTitle: String
-    ): [Job]
+    applyJob(
+      jobId: String!
+    ): Job
 
     saveJob(
       jobId: String

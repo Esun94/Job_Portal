@@ -4,23 +4,29 @@ import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import Logo from '../assets/logo.jpeg';
 
-
-
 const Header = () => {
-  const linkStyle = { color: 'white', textDecoration: 'none'};
+  const linkStyle = { color: 'white', textDecoration: 'none' };
   const showNavigation = () => {
     if (Auth.loggedIn()) {
       return (
         <>
           {Auth.getLoggedInUserType() === 'user' ? (
             <>
-            <Nav.Link><Link to="/searchjobs">Search job</Link></Nav.Link>
-            <Nav.Link href="#" onClick={() => Auth.logout()}>logout</Nav.Link>
+              <Link to="/searchjobs" className="nav-link">
+                Search job
+              </Link>
+              <Nav.Link href="#" onClick={() => Auth.logout()}>
+                logout
+              </Nav.Link>
             </>
           ) : (
             <>
-            <Nav.Link><Link to="/postjobs">Post job</Link></Nav.Link>
-            <Nav.Link href="#" onClick={() => Auth.logout()}>logout</Nav.Link>
+              <Link to="/postjobs" className="nav-link">
+                Post job
+              </Link>
+              <Nav.Link href="#" onClick={() => Auth.logout()}>
+                logout
+              </Nav.Link>
             </>
           )}
         </>
@@ -28,10 +34,19 @@ const Header = () => {
     } else {
       return (
         <>
-          <Nav>
-            </Nav><Nav.Link><Link style={linkStyle} to="/login/jobseeker">Job-Seeker</Link></Nav.Link>
-          <Nav.Link><Link style={linkStyle} to="/login/employer">Employer</Link></Nav.Link>
-          <Nav.Link><Link style={{...linkStyle, marginLeft: 'auto'}} className="justify-content-end" to="/signup">Signup</Link></Nav.Link>
+          <Link style={linkStyle} to="/login/jobseeker" className="nav-link">
+            Job-Seeker
+          </Link>
+          <Link style={linkStyle} to="/login/employer" className="nav-link">
+            Employer
+          </Link>
+          <Link
+            style={{ ...linkStyle, marginLeft: 'auto' }}
+            className="justify-content-end nav-link"
+            to="/signup"
+          >
+            Signup
+          </Link>
         </>
       );
     }
@@ -42,12 +57,10 @@ const Header = () => {
       <Container>
         <Navbar.Brand>
           <Link to="/">
-            <img src={Logo} width="100"/>
+            <img src={Logo} width="100" />
           </Link>
         </Navbar.Brand>
-        <Nav className="me-auto">
-         {showNavigation()}
-        </Nav>
+        <Nav className="me-auto">{showNavigation()}</Nav>
       </Container>
     </Navbar>
   );
