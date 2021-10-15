@@ -133,7 +133,15 @@ type Job {
       accountManageremail: String,
       accountManagerphone: String): Auth
     
-    addJob(job: NewJobInput): Job
+    addJob(
+      postDate: Date
+      jobTitle: String
+      jobLocation: String
+      jobType: String
+      salary: String
+      jobDescription: String
+      skills: String
+      employer: ID): Job
 
     deleteJob(jobId: ID!): Job
     
