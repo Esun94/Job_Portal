@@ -116,11 +116,11 @@ const handleSubmit = async (event) => {
                     <Form.Group as={Col} controlId="formGridjobDescription">
                         <Form.Label>Description</Form.Label>
                         <Form.Control 
-                        type="text"
+                        as="textarea"
                         placeholder="Enter Job Description" 
                         name="jobDescription"
                         onChange={handleInputChange}
-                        style={{ height: '150px', width: '525px', display: "block" }}
+                        style={{height:"150px"}}
                         required/>
                     </Form.Group>
                 </Row>
