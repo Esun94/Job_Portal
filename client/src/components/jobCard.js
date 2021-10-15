@@ -2,10 +2,13 @@ import React, {useEffect} from 'react';
 import { Form, Col, Row, Button, Card, ListGroup, ListGroupItem, Container } from 'react-bootstrap';
 import { useQuery, gql } from '@apollo/client';
 import { GET_JOBS } from '../utils/queries';
+import { APPLY_JOB } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 
 const JobCard = () => {
+
+    const applyJob
     
     const { error, loading, data } = useQuery(GET_JOBS)
     const jobs = data?.jobs || [];
@@ -13,6 +16,23 @@ const JobCard = () => {
     // useEffect(() => {
 
     // }, [data]);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+    
+        try {
+            const { data } = await addJob({
+                variables: { ...userFormData },
+            });
+    
+            if (!data) {
+                throw new Error('something went wrong!');
+            }
+    
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     return (
         <Row xs={1} md={3} className="g-4">
