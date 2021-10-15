@@ -64,6 +64,7 @@ type Job {
     employer(id: ID!): Employer
     jobs(id: ID, jobTitle: String): [Job]
     employerJobs: [Job]
+    userAppliedJobs: [Job]
   }
 
   input NewUserInput {
@@ -162,8 +163,6 @@ type Job {
     removeJob(jobId: ID!): User
 
     applyToJob(userId: ID!): Job
-
-    jobsApplied(userId: ID!, jobId: ID!): Job
 
   }
 `;

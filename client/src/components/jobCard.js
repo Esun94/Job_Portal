@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Row, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Auth from '../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_JOBS } from '../utils/queries';
+import { GET_JOBS, USER_APPLIED_JOBS } from '../utils/queries';
 import { APPLY_JOB } from '../utils/mutations';
 import { Button } from 'react-bootstrap';
 
@@ -12,6 +12,17 @@ const JobCard = ({ jobTitle }) => {
     variables: { jobTitle },
   });
   const jobs = data?.jobs || [];
+
+  const appliedJobsResult = useQuery(USER_APPLIED_JOBS);
+  let appliedJobs = [];
+
+  if ( 
+    appliedJobsResult &&
+    appliedJobsResult.data &&
+    appliedJobsResult.data.userAppliedJobs
+  ) {
+    appliedJobs = appliedJobsResult.data.userAppliedJobs.map(a => a._id);
+  }
 
   const handleApplyJob = async (event, id) => {
     console.log(id);
@@ -27,8 +38,8 @@ const JobCard = ({ jobTitle }) => {
         alert('Job applied!');
       }
     } else {
-        // make the user to login
-        window.location.assign('login/jobseeker');
+      // make the user to login
+      window.location.assign('login/jobseeker');
     }
     // 2. call APPLY_JOB based on user logged in
     // 3. If not logged then redirect to Login USer/JobSeeker
@@ -54,8 +65,9 @@ const JobCard = ({ jobTitle }) => {
                 <Button
                   type="button"
                   onClick={(e) => handleApplyJob(e, job._id)}
+                  disabled={appliedJobs.includes(job._id)}
                 >
-                  Apply
+                  {appliedJobs.includes(job._id) ? 'Applied' : 'Apply'}
                 </Button>
               </Card.Link>
             </Card.Footer>

@@ -1,23 +1,23 @@
 import { gql } from '@apollo/client';
 
 export const GET_USER = gql`
-    query user($id: ID!){
-        user(id:$id) {
+  query user($id: ID!) {
+    user(id: $id) {
+      _id
+      firstName
+      lastName
+      email
+      phone
+      password
+      resume
+      skill
+      locationPreference
+      jobtypePreference
+      salaryRange
+      savedJobs {
         _id
-        firstName
-        lastName
-        email
-        phone
-        password
-        resume
-        skill
-        locationPreference
-        jobtypePreference
-        salaryRange
-        savedJobs {
-          _id
-          jobTitle
-        }
+        jobTitle
+      }
     }
   }
 `;
@@ -54,6 +54,15 @@ export const GET_JOBS = gql`
         _id
         companyName
       }
+    }
+  }
+`;
+
+export const USER_APPLIED_JOBS = gql`
+  query userAppliedJobs {
+    userAppliedJobs {
+      _id
+      jobTitle
     }
   }
 `;
