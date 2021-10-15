@@ -31,7 +31,6 @@ function Employerlogin(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
 
       <h2>Employer Login</h2>
       <form onSubmit={handleFormSubmit}>

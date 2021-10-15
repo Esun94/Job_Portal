@@ -43,10 +43,17 @@ const jobSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Employer'
     },
+<<<<<<< HEAD
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
+=======
+    users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
+>>>>>>> 79c281f136ae39da585ba3f4abc41c71d70578a0
 });
 
 const Job = model('Job', jobSchema)

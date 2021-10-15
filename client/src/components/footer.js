@@ -1,12 +1,13 @@
-import React from "react";
+import React from 'react';
 
 const Footer = () => {
-
-    return(
-        <footer>
-            <div>&copy; Job-Portal</div>
-        </footer>
-    );
-}
+  return (
+    <footer className="footer mt-auto py-3 bg-light">
+      <div className="container">
+        <span className="text-muted">&copy; Job Portal</span>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
