@@ -41,8 +41,6 @@ const JobCard = ({ jobTitle }) => {
       // make the user to login
       window.location.assign('login/jobseeker');
     }
-    // 2. call APPLY_JOB based on user logged in
-    // 3. If not logged then redirect to Login USer/JobSeeker
   };
 
   return (
