@@ -134,6 +134,7 @@ type Job {
       accountManagerphone: String): Auth
     
     addJob(job: NewJobInput): Job
+
     deleteJob(jobId: ID!): Job
     
     applyJob(
