@@ -17,8 +17,8 @@ const JobCard = () => {
     return (
         <Row xs={1} md={3} className="g-4">
             {jobs.map((job) => (
-                <Col>
-                <Card style={{ width: 'auto'}}>
+                <Col key={job._id}>
+                <Card style={{ width: 'auto'}} >
                     {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
                     <Card.Body>
                         <Card.Title>{job.jobTitle}</Card.Title>

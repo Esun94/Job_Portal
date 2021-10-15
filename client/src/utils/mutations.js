@@ -73,15 +73,19 @@ export const CREATE_EMPLOYER = gql`
 `;
 
 export const ADD_JOB = gql`
-  mutation ($job: NewJobInput) {
-    addJob(job: $job) {
-      _id
+  mutation ($jobTitle: String, $jobLocation: String, $jobType: String
+    $salary: String, $jobDescription: String, $skills: String, $employer: ID) {
+    addJob(jobTitle: $jobTitle, jobLocation: $jobLocation, jobType: $jobType
+     salary: $salary, jobDescription: $jobDescription, skills: $skills, employer: $employer) {
       jobTitle
       jobLocation
       jobType
       salary
       jobDescription
       skills
+      employer {
+        companyName
+      }
     }
   }
 `;
