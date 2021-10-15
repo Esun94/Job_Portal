@@ -42,6 +42,7 @@ export const GET_EMPLOYER = gql`
 export const GET_JOBS = gql`
   query jobs($id: ID, $jobTitle: String) {
     jobs(id: $id, jobTitle: $jobTitle) {
+      _id
       postDate
       jobTitle
       jobLocation

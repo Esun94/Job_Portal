@@ -1,23 +1,38 @@
 import React from 'react';
 import { Col, Row, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Auth from '../utils/auth';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_JOBS } from '../utils/queries';
+import { APPLY_JOB } from '../utils/mutations';
+import { Button } from 'react-bootstrap';
 
 const JobCard = ({ jobTitle }) => {
-
+  const [applyJob, { errorApplyJob }] = useMutation(APPLY_JOB);
   const { error, loading, data } = useQuery(GET_JOBS, {
     variables: { jobTitle },
   });
   const jobs = data?.jobs || [];
 
-  const handleApplyJob = (event) => {
-    // TODO:
-    // 1. get the Job ID
+  const handleApplyJob = async (event, id) => {
+    console.log(id);
+
+    if (Auth.loggedIn()) {
+      const { data } = await applyJob({
+        variables: {
+          jobId: id,
+        },
+      });
+
+      if (data) {
+        alert('Job applied!');
+      }
+    } else {
+        // make the user to login
+        window.location.assign('login/jobseeker');
+    }
     // 2. call APPLY_JOB based on user logged in
     // 3. If not logged then redirect to Login USer/JobSeeker
-    
-  }
+  };
 
   return (
     <Row xs={1} md={3} className="g-4">
@@ -36,7 +51,10 @@ const JobCard = ({ jobTitle }) => {
             </ListGroup>
             <Card.Footer>
               <Card.Link>
-                <Button type="button" onClick={handleApplyJob}>
+                <Button
+                  type="button"
+                  onClick={(e) => handleApplyJob(e, job._id)}
+                >
                   Apply
                 </Button>
               </Card.Link>

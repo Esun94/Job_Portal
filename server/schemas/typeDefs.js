@@ -163,6 +163,8 @@ type Job {
 
     applyToJob(userId: ID!): Job
 
+    jobsApplied(userId: ID!, jobId: ID!): Job
+
   }
 `;
 
