@@ -44,6 +44,8 @@ const handleSubmit = async (event) => {
 
         if (!data) {
             throw new Error('something went wrong!');
+        } else {
+            alert('Job posted!');
         }
 
     } catch (err) {
