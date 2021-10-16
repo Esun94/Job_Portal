@@ -22,6 +22,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import SearchBar from './components/searchBar';
 import PostJob from './components/postJobForm';
+import JobPackages from './components/jobPricePackages';
 
 import Employerlogin from './pages/EmployerLogin';
 
@@ -68,12 +69,13 @@ function App() {
                 <Route path="/login/jobseeker" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/postjobs" component={PostJob} />
-                <Route path="/searchjobs">
-                  <div>
+                <Route path="/searchjobs" component={SearchBar}>
+                  {/* <div>
                     <h1> Search Jobs</h1>
                     <SearchBar placeholder="Search for Jobs Here..." />
-                  </div>
+                  </div> */}
                 </Route>
+                <Route path="/jobpackages" component={JobPackages}></Route>
               </Switch>
             </div>
           </main>
