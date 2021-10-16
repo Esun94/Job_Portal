@@ -24,6 +24,7 @@ const Header = () => {
               <Link to="/postjobs" className="nav-link">
                 Post job
               </Link>
+              <Link to="/jobpackages" className="nav-link">Job Post Packages</Link>
               <Nav.Link href="#" onClick={() => Auth.logout()}>
                 logout
               </Nav.Link>
