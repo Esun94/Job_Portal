@@ -1,0 +1,8 @@
+.btn-outline-signup {
+    padding: 10px 15px;
+}
+
+.btn-outline-signup a {
+    color: var(--white) !important;
+    text-decoration: none;
+}

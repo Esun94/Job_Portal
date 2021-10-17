@@ -2,7 +2,8 @@ import React from 'react';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import Logo from '../assets/logo.jpeg';
+import Logo from '../assets/logo.jpg';
+import './header.css';
 
 const Header = () => {
   const linkStyle = { color: 'white', textDecoration: 'none' };
@@ -58,10 +59,10 @@ const Header = () => {
       <Container>
         <Navbar.Brand>
           <Link to="/">
-            <img src={Logo} width="100" />
+            <img src={Logo} width="240px" />
           </Link>
         </Navbar.Brand>
-        <Nav className="me-auto">{showNavigation()}</Nav>
+        <Nav className="ml-auto">{showNavigation()}</Nav>
       </Container>
     </Navbar>
   );
