@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Col, Row, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Col, Row, Card, ListGroup, ListGroupItem, Button, Alert } from 'react-bootstrap';
 import Auth from '../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_JOBS, USER_APPLIED_JOBS } from '../utils/queries';
 import { APPLY_JOB } from '../utils/mutations';
-import { Button } from 'react-bootstrap';
 
 const JobCard = ({ jobTitle }) => {
   const [applyJob, { errorApplyJob }] = useMutation(APPLY_JOB);
@@ -16,12 +15,12 @@ const JobCard = ({ jobTitle }) => {
   const appliedJobsResult = useQuery(USER_APPLIED_JOBS);
   let appliedJobs = [];
 
-  if ( 
+  if (
     appliedJobsResult &&
     appliedJobsResult.data &&
     appliedJobsResult.data.userAppliedJobs
   ) {
-    appliedJobs = appliedJobsResult.data.userAppliedJobs.map(a => a._id);
+    appliedJobs = appliedJobsResult.data.userAppliedJobs.map((a) => a._id);
   }
 
   const handleApplyJob = async (event, id) => {
@@ -36,6 +35,7 @@ const JobCard = ({ jobTitle }) => {
 
       if (data) {
         alert('Job applied!');
+        window.location.assign('/jobseeker/searchjobs');  
       }
     } else {
       // make the user to login
@@ -48,16 +48,19 @@ const JobCard = ({ jobTitle }) => {
       {jobs.map((job) => (
         <Col key={job._id}>
           <Card style={{ width: 'auto' }}>
-            {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
-            <Card.Body>
+            <Card.Header className="bg-tertiary">
               <Card.Title>{job.jobTitle}</Card.Title>
-              <Card.Text>{job.jobDescription}</Card.Text>
-            </Card.Body>
+            </Card.Header>
+          
             <ListGroup className="list-group-flush">
               <ListGroupItem>{job.jobLocation}</ListGroupItem>
               <ListGroupItem>{job.salary}</ListGroupItem>
               <ListGroupItem>{job.employer.companyName}</ListGroupItem>
             </ListGroup>
+
+            <Card.Body>
+              <Card.Text>{job.jobDescription}</Card.Text>
+            </Card.Body>
             <Card.Footer>
               <Card.Link>
                 <Button

@@ -1,9 +1,11 @@
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
-  --light: #fafafa;
+  --primary: #316B83;
+  --secondary:#6D8299;
+  --tertiary:#8CA1A5;
+  --light: #D5BFBF;
+  --white: #fafafa;
   --dark: #272f32;
+  --success: #57CC99;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
@@ -141,6 +143,10 @@ input:focus {
   margin-right: auto;
 }
 
+.btn-primary {
+  background-color: var(--primary) !important;
+}
+
 .flex-row {
   display: flex;
   flex-wrap: wrap;
@@ -201,6 +207,22 @@ input:focus {
 
 .error-text {
   color: var(--error);
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+.bg-tertiary {
+  background-color: var(--tertiary) !important;
+}
+
+.font-weight-bold {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {

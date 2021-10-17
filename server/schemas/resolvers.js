@@ -34,13 +34,13 @@ const resolvers = {
     employerJobs: async (parent, args, context) => {
       const result = await Job.find({
         employer: context.user._id,
-      });
+      }).populate('employer').populate('users');
       return result;
     },
     userAppliedJobs: async(parent, args, context) => {
       const result = await Job.find({
         users: context.user._id,
-      });
+      }).populate('employer');
       return result;
     }
   },
@@ -48,13 +48,24 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
-      const token = signToken(user);
+      const userInfo = {
+        name: `${user.firstName} ${user.lastName}`,
+        _id: user._id, 
+        email: user.email
+      }
+      const token = signToken(userInfo, 'user');
       return { token, user };
     },
 
     addEmployer: async (parent, args) => {
       const employer = await Employer.create(args);
-      const token = signToken(employer);
+      const userInfo = {
+        name: `${employer.companyName}`,
+        _id: employer._id, 
+        email: employer.email
+      }
+      
+      const token = signToken(userInfo, 'employer');
       return { token, employer };
     },
 
@@ -73,8 +84,13 @@ const resolvers = {
             'Invalid credentials, please try again'
           );
         }
-        const token = signToken(userProfile, 'user');
-        return { token, userProfile };
+        const userInfo = {
+          name: `${userProfile.firstName} ${userProfile.lastName}`,
+          _id: userProfile._id, 
+          email: userProfile.email
+        }
+        const token = signToken(userInfo, 'user');
+        return { token, userInfo };
       } else if (employerProfile) {
         const correctEmployerPw = await employerProfile.isCorrectPassword(
           password
@@ -84,8 +100,13 @@ const resolvers = {
             'Invalid credentials, please try again'
           );
         }
-        const token = signToken(employerProfile, 'employer');
-        return { token, employerProfile };
+        const userInfo = {
+          name: `${employerProfile.companyName}`,
+          _id: employerProfile._id, 
+          email: employerProfile.email
+        }
+        const token = signToken(userInfo, 'employer');
+        return { token, userInfo };
       }
     },
 

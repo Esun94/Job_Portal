@@ -2,7 +2,8 @@ import React from 'react';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import Logo from '../assets/logo.jpeg';
+import Logo from '../assets/logo.jpg';
+import './header.css';
 
 const Header = () => {
   const linkStyle = { color: 'white', textDecoration: 'none' };
@@ -12,21 +13,29 @@ const Header = () => {
         <>
           {Auth.getLoggedInUserType() === 'user' ? (
             <>
-              <Link to="/searchjobs" className="nav-link">
+              <Link to="/jobseeker/dashboard" className="nav-link">
+                Jobseeker Dashboard
+              </Link>
+              <Link to="/jobseeker/searchjobs" className="nav-link">
                 Search job
               </Link>
               <Nav.Link href="#" onClick={() => Auth.logout()}>
-                logout
+                Logout
               </Nav.Link>
             </>
           ) : (
             <>
-              <Link to="/postjobs" className="nav-link">
+              <Link to="/employer/dashboard" className="nav-link">
+                Employer Dashboard
+              </Link>
+              <Link to="/employer/postjobs" className="nav-link">
                 Post job
               </Link>
-              <Link to="/jobpackages" className="nav-link">Job Post Packages</Link>
+              <Link to="/employer/jobpackages" className="nav-link">
+                Job Post Packages
+              </Link>
               <Nav.Link href="#" onClick={() => Auth.logout()}>
-                logout
+                Logout
               </Nav.Link>
             </>
           )}
@@ -58,10 +67,10 @@ const Header = () => {
       <Container>
         <Navbar.Brand>
           <Link to="/">
-            <img src={Logo} width="100" />
+            <img src={Logo} width="240px" />
           </Link>
         </Navbar.Brand>
-        <Nav className="me-auto">{showNavigation()}</Nav>
+        <Nav className="ml-auto">{showNavigation()}</Nav>
       </Container>
     </Navbar>
   );
