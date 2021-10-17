@@ -1,3 +1,4 @@
+const { UniqueArgumentNamesRule } = require('graphql');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 
@@ -27,8 +28,8 @@ module.exports = {
 
     return req;
   },
-  signToken: function ({ email, _id }, type) {
-    const payload = { email, _id, type };
+  signToken: function (user, type) {
+    const payload = { ...user, type };
 
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },

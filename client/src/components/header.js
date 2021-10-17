@@ -13,21 +13,29 @@ const Header = () => {
         <>
           {Auth.getLoggedInUserType() === 'user' ? (
             <>
-              <Link to="/searchjobs" className="nav-link">
+              <Link to="/jobseeker/dashboard" className="nav-link">
+                Jobseeker Dashboard
+              </Link>
+              <Link to="/jobseeker/searchjobs" className="nav-link">
                 Search job
               </Link>
               <Nav.Link href="#" onClick={() => Auth.logout()}>
-                logout
+                Logout
               </Nav.Link>
             </>
           ) : (
             <>
-              <Link to="/postjobs" className="nav-link">
+              <Link to="/employer/dashboard" className="nav-link">
+                Employer Dashboard
+              </Link>
+              <Link to="/employer/postjobs" className="nav-link">
                 Post job
               </Link>
-              <Link to="/jobpackages" className="nav-link">Job Post Packages</Link>
+              <Link to="/employer/jobpackages" className="nav-link">
+                Job Post Packages
+              </Link>
               <Nav.Link href="#" onClick={() => Auth.logout()}>
-                logout
+                Logout
               </Nav.Link>
             </>
           )}

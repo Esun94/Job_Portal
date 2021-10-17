@@ -3,7 +3,7 @@ import { Form, Col, Row, Button, Container } from 'react-bootstrap';
 import JobCard from './jobCard';
 
 
-const SearchBar = ({placeholder}) => {
+const SearchBar = () => {
   const [jobTitle, setJobTitle] = useState('');
   
   // const handleInputChange = (event) => {
@@ -18,7 +18,7 @@ const SearchBar = ({placeholder}) => {
 
   return (
     <>
-      <Container fluid="md">
+      <Container className="mt-4" fluid="md">
         <Form onSubmit={handleSubmit}>
           <Row className="align-items-center">
             <Col xs="auto">
@@ -27,7 +27,7 @@ const SearchBar = ({placeholder}) => {
               </Form.Label>
               <Form.Control
                 type="search"
-                placeholder={placeholder}
+                placeholder="search jobs..."
                 name="jobTitle"
               />
             </Col>

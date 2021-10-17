@@ -63,6 +63,12 @@ export const USER_APPLIED_JOBS = gql`
     userAppliedJobs {
       _id
       jobTitle
+      jobLocation
+      jobType
+      employer {
+        companyName
+        website
+      }
     }
   }
 `;

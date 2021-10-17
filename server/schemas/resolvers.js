@@ -40,7 +40,7 @@ const resolvers = {
     userAppliedJobs: async(parent, args, context) => {
       const result = await Job.find({
         users: context.user._id,
-      });
+      }).populate('employer');
       return result;
     }
   },
@@ -73,8 +73,13 @@ const resolvers = {
             'Invalid credentials, please try again'
           );
         }
-        const token = signToken(userProfile, 'user');
-        return { token, userProfile };
+        const userInfo = {
+          name: `${userProfile.firstName} ${userProfile.lastName}`,
+          _id: userProfile._id, 
+          email: userProfile.email
+        }
+        const token = signToken(userInfo, 'user');
+        return { token, userInfo };
       } else if (employerProfile) {
         const correctEmployerPw = await employerProfile.isCorrectPassword(
           password
@@ -84,8 +89,13 @@ const resolvers = {
             'Invalid credentials, please try again'
           );
         }
-        const token = signToken(employerProfile, 'employer');
-        return { token, employerProfile };
+        const userInfo = {
+          name: `${employerProfile.companyName}`,
+          _id: employerProfile._id, 
+          email: employerProfile.email
+        }
+        const token = signToken(userInfo, 'employer');
+        return { token, userInfo };
       }
     },
 
