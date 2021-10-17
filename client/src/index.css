@@ -209,6 +209,18 @@ input:focus {
   color: var(--error);
 }
 
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+.bg-tertiary {
+  background-color: var(--tertiary) !important;
+}
+
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;

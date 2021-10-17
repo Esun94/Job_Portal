@@ -35,7 +35,7 @@ type Job {
   jobDescription: String
   skills: [String]
   employer: Employer
-  user: User
+  users: [User]
 }
 
   type User {

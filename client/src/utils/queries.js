@@ -72,3 +72,28 @@ export const USER_APPLIED_JOBS = gql`
     }
   }
 `;
+
+export const EMPLOYER_JOBS = gql`
+  query employerJobs {
+    employerJobs {
+      _id
+      postDate
+      jobTitle
+      jobLocation
+      jobType
+      skills
+      employer {
+        _id
+        companyName
+      }
+      users {
+        _id
+        firstName
+        lastName
+        email
+        phone
+        resume
+      }
+    }
+  }
+`;

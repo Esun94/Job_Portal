@@ -34,7 +34,7 @@ const resolvers = {
     employerJobs: async (parent, args, context) => {
       const result = await Job.find({
         employer: context.user._id,
-      });
+      }).populate('employer').populate('users');
       return result;
     },
     userAppliedJobs: async(parent, args, context) => {
