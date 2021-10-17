@@ -54,7 +54,7 @@ const jobSchema = new Schema({
 });
 
 jobSchema.pre('save', async function (next) {
-  if (this.skills[0]) {
+  if (this.skills.length === 1) {
     this.skills = this.skills[0].split(',');
   }
 
