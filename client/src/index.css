@@ -221,6 +221,10 @@ input:focus {
   background-color: var(--tertiary) !important;
 }
 
+.font-weight-bold {
+  font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;
