@@ -48,13 +48,24 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
-      const token = signToken(user);
+      const userInfo = {
+        name: `${user.firstName} ${user.lastName}`,
+        _id: user._id, 
+        email: user.email
+      }
+      const token = signToken(userInfo, 'user');
       return { token, user };
     },
 
     addEmployer: async (parent, args) => {
       const employer = await Employer.create(args);
-      const token = signToken(employer);
+      const userInfo = {
+        name: `${employer.companyName}`,
+        _id: employer._id, 
+        email: employer.email
+      }
+      
+      const token = signToken(userInfo, 'employer');
       return { token, employer };
     },
 

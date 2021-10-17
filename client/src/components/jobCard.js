@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Col, Row, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Col, Row, Card, ListGroup, ListGroupItem, Button, Alert } from 'react-bootstrap';
 import Auth from '../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_JOBS, USER_APPLIED_JOBS } from '../utils/queries';
 import { APPLY_JOB } from '../utils/mutations';
-import { Button } from 'react-bootstrap';
 
 const JobCard = ({ jobTitle }) => {
   const [applyJob, { errorApplyJob }] = useMutation(APPLY_JOB);
@@ -36,6 +35,7 @@ const JobCard = ({ jobTitle }) => {
 
       if (data) {
         alert('Job applied!');
+        window.location.assign('/jobseeker/searchjobs');  
       }
     } else {
       // make the user to login

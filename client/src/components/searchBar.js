@@ -5,11 +5,6 @@ import JobCard from './jobCard';
 
 const SearchBar = () => {
   const [jobTitle, setJobTitle] = useState('');
-  
-  // const handleInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setSearchForm({ ...searchForm, [name]: value });
-  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();
