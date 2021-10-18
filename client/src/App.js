@@ -51,37 +51,34 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <Header />
-          <main className="flex-shrink-0">
-            <div className="container">
-              <Switch>
-                <Route exact path="/">
-                  {Auth.loggedIn() ? (
-                    Auth.getLoggedInUserType() === 'user' ? (
-                      <Redirect to="/jobseeker/dashboard" />
-                    ) : (
-                      <Redirect to="/employer/dashboard" component={EmployerDashboard}/>
-                    )
-                  ) : (
-                    <Home />
-                  )}
-                </Route>
-                <Route path="/login/employer" component={Employerlogin} />
-                <Route path="/login/jobseeker" component={Login} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/employer/dashboard" component={EmployerDashboard} />
-                <Route path="/employer/postjobs" component={PostJob} />
-                <Route path="/employer/jobpackages" component={JobPackages}></Route>
-                <Route path="/jobseeker/dashboard" component={JobseekerDashboard} />
-                <Route path="/jobseeker/searchjobs" component={SearchBar}>
-                </Route>
-                
-              </Switch>
-            </div>
-          </main>
-          <Footer />
-        </div>
+        <Header />
+        <div style={{ flex: '1 0 auto', marginBottom: '100px' }}>
+          <Switch>
+            <Route exact path="/">
+              {Auth.loggedIn() ? (
+                Auth.getLoggedInUserType() === 'user' ? (
+                  <Redirect to="/jobseeker/dashboard" />
+                ) : (
+                  <Redirect
+                    to="/employer/dashboard"
+                    component={EmployerDashboard}
+                  />
+                )
+              ) : (
+                <Home />
+              )}
+            </Route>
+            <Route path="/login/employer" component={Employerlogin} />
+            <Route path="/login/jobseeker" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/employer/dashboard" component={EmployerDashboard} />
+            <Route path="/employer/postjobs" component={PostJob} />
+            <Route path="/employer/jobpackages" component={JobPackages}></Route>
+            <Route path="/jobseeker/dashboard" component={JobseekerDashboard} />
+            <Route path="/jobseeker/searchjobs" component={SearchBar}></Route>
+          </Switch>          
+        </div>        
+        <Footer />
       </Router>
     </ApolloProvider>
   );
